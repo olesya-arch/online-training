@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface TaskPerformedDao {
 
-    boolean sendTask(int taskId, int userId) throws DaoException;
-    boolean sendReview(int taskId, int userId, String comment, int mark) throws  DaoException;
+    boolean sendReview(int userId, int taskId, String comment, int mark) throws  DaoException;
     List<TaskPerformed> findAllReviewsByTaskId(int taskId) throws DaoException;
 }

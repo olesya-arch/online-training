@@ -4,22 +4,25 @@ import java.util.Objects;
 
 public class Course implements BaseEntity {
 
-    private static final long serialVersionUID = 5791969173175454315L;
+    private static final long serialVersionUID = 5628224912379465198L;
     private Integer id;
     private CourseType typeId;
     private UserRole teacherId;
     private CourseStatus status;
+    private Boolean isAvailable;
     private String title;
     private String description;
 
     public Course() {
     }
 
-    public Course(Integer id, CourseType typeId, UserRole teacherId, CourseStatus status, String title, String description) {
+    public Course(Integer id, CourseType typeId, UserRole teacherId, CourseStatus status, Boolean isAvailable,
+                  String title, String description) {
         this.id = id;
         this.typeId = typeId;
         this.teacherId = teacherId;
         this.status = status;
+        this.isAvailable = isAvailable;
         this.title = title;
         this.description = description;
     }
@@ -73,6 +76,10 @@ public class Course implements BaseEntity {
         this.description = description;
     }
 
+    public Boolean getAvailable() { return isAvailable; }
+
+    public void setAvailable(Boolean available) { isAvailable = available; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,13 +89,14 @@ public class Course implements BaseEntity {
                 && typeId == course.typeId
                 && teacherId == course.teacherId
                 && status == course.status
+                && Objects.equals(isAvailable, course.isAvailable)
                 && Objects.equals(title, course.title)
                 && Objects.equals(description, course.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, typeId, teacherId, status, title, description);
+        return Objects.hash(id, typeId, teacherId, status, isAvailable, title, description);
     }
 
     @Override
@@ -98,6 +106,7 @@ public class Course implements BaseEntity {
                 ", typeId=" + typeId +
                 ", teacherId=" + teacherId +
                 ", status=" + status +
+                ", isAvailable=" + isAvailable +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 '}';

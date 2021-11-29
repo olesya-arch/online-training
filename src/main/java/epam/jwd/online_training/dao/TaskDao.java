@@ -9,4 +9,5 @@ public interface TaskDao {
 
     List<Task> findTaskByCourseId(int courseId) throws DaoException;
     boolean addTask(int courseId, String title, String description) throws DaoException;
+    List<Task> findReceivedTasks(int userId) throws DaoException;
 }

@@ -76,10 +76,10 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 
     private static final String ADD_USER_ACCOUNT =
             "insert into user_account " +
-                    "e_mail, " +
+                    "(e_mail, " +
                     "u_password, " +
                     "first_name, " +
-                    "last_name," +
+                    "last_name, " +
                     "account_role) " +
                     "values (?,?,?,?,?)";
 
