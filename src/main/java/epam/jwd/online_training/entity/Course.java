@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Course implements BaseEntity {
 
-    private static final long serialVersionUID = 5628224912379465198L;
+    private static final long serialVersionUID = -3456188089825198902L;
     private Integer id;
     private CourseType typeId;
-    private UserRole teacherId;
+    private int teacherId;
     private CourseStatus status;
     private Boolean isAvailable;
     private String title;
@@ -16,7 +16,7 @@ public class Course implements BaseEntity {
     public Course() {
     }
 
-    public Course(Integer id, CourseType typeId, UserRole teacherId, CourseStatus status, Boolean isAvailable,
+    public Course(Integer id, CourseType typeId, int teacherId, CourseStatus status, Boolean isAvailable,
                   String title, String description) {
         this.id = id;
         this.typeId = typeId;
@@ -44,11 +44,9 @@ public class Course implements BaseEntity {
         this.typeId = typeId;
     }
 
-    public UserRole getTeacherId() {
-        return teacherId;
-    }
+    public int getTeacherId() {return teacherId;}
 
-    public void setTeacherId(UserRole teacherId) {
+    public void setTeacherId(int teacherId) {
         this.teacherId = teacherId;
     }
 

@@ -1,5 +1,6 @@
 package epam.jwd.online_training.dao;
 
+import epam.jwd.online_training.dto.TaskDto;
 import epam.jwd.online_training.entity.Task;
 import epam.jwd.online_training.exception.DaoException;
 
@@ -9,5 +10,5 @@ public interface TaskDao {
 
     List<Task> findTaskByCourseId(int courseId) throws DaoException;
     boolean addTask(int courseId, String title, String description) throws DaoException;
-    List<Task> findReceivedTasks(int userId) throws DaoException;
+    List<TaskDto> findReceivedTasks(int userId) throws DaoException;
 }

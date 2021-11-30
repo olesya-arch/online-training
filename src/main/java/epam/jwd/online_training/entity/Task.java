@@ -4,20 +4,20 @@ import java.util.Objects;
 
 public class Task implements BaseEntity {
 
-    private static final long serialVersionUID = -8805107403083345233L;
+    private static final long serialVersionUID = -6395165809160123490L;
     private Integer id;
     private String title;
     private String description;
-    private Course course;
+    private int courseId;
 
     public Task () {
     }
 
-    public Task(Integer id, String title, String description, Course course) {
+    public Task(Integer id, String title, String description, int courseId) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.course = course;
+        this.courseId = courseId;
     }
 
     @Override
@@ -37,13 +37,9 @@ public class Task implements BaseEntity {
         this.title = title;
     }
 
-    public Course getCourse() {
-        return course;
-    }
+    public int getCourseId() { return courseId; }
 
-    public void setCourse(Course course) {
-        this.course = course;
-    }
+    public void setCourseId(int courseId) { this.courseId = courseId; }
 
     public String getDescription() {
         return description;
@@ -56,17 +52,17 @@ public class Task implements BaseEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Task)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equals(getId(), task.getId())
-                && Objects.equals(getTitle(), task.getTitle())
-                && Objects.equals(getCourse(), task.getCourse())
-                && Objects.equals(getDescription(), task.getDescription());
+        return courseId == task.courseId
+                && Objects.equals(id, task.id)
+                && Objects.equals(title, task.title)
+                && Objects.equals(description, task.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getDescription(), getCourse());
+        return Objects.hash(id, title, description, courseId);
     }
 
     @Override
@@ -75,7 +71,7 @@ public class Task implements BaseEntity {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", course=" + course +
+                ", courseId=" + courseId +
                 '}';
     }
 }

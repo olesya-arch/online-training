@@ -2,18 +2,18 @@ package epam.jwd.online_training.entity;
 
 import java.util.Objects;
 
-public class TaskPerformed implements BaseEntity {
+public class TaskReview implements BaseEntity {
 
-    private static final long serialVersionUID = -5960126299095018163L;
+    private static final long serialVersionUID = -8820643852147005485L;
     private Integer studentId;
     private Integer taskId;
     private String teacherComment;
     private Integer mark;
 
-    public TaskPerformed() {
+    public TaskReview() {
     }
 
-    public TaskPerformed(Integer studentId, Integer taskId, String teacherComment, Integer mark) {
+    public TaskReview(Integer studentId, Integer taskId, String teacherComment, Integer mark) {
         this.studentId = studentId;
         this.taskId = taskId;
         this.teacherComment = teacherComment;
@@ -56,7 +56,7 @@ public class TaskPerformed implements BaseEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TaskPerformed that = (TaskPerformed) o;
+        TaskReview that = (TaskReview) o;
         return Objects.equals(studentId, that.studentId)
                 && Objects.equals(taskId, that.taskId)
                 && Objects.equals(teacherComment, that.teacherComment)
@@ -70,7 +70,7 @@ public class TaskPerformed implements BaseEntity {
 
     @Override
     public String toString() {
-        return "TaskPerformed{" +
+        return "TaskReview{" +
                 "studentId=" + studentId +
                 ", taskId=" + taskId +
                 ", teacherComment='" + teacherComment + '\'' +
