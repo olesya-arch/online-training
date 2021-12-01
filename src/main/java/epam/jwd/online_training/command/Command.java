@@ -3,7 +3,7 @@ package epam.jwd.online_training.command;
 import epam.jwd.online_training.content.ActionResult;
 import epam.jwd.online_training.content.RequestContent;
 import epam.jwd.online_training.exception.CommandException;
-import epam.jwd.online_training.logic.Service;
+import epam.jwd.online_training.service.Service;
 
 public abstract class Command {
 

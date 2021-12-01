@@ -7,8 +7,8 @@ import epam.jwd.online_training.content.NavigationType;
 import epam.jwd.online_training.content.RequestContent;
 import epam.jwd.online_training.exception.CommandException;
 import epam.jwd.online_training.exception.ServiceException;
-import epam.jwd.online_training.logic.ServiceManager;
-import epam.jwd.online_training.logic.UserService;
+import epam.jwd.online_training.service.ServiceManager;
+import epam.jwd.online_training.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

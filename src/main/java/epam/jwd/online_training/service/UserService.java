@@ -1,4 +1,4 @@
-package epam.jwd.online_training.logic;
+package epam.jwd.online_training.service;
 
 import epam.jwd.online_training.entity.User;
 import epam.jwd.online_training.exception.ServiceException;

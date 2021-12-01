@@ -1,4 +1,4 @@
-package epam.jwd.online_training.logic;
+package epam.jwd.online_training.service;
 
 import epam.jwd.online_training.dao.DAOManager;
 import epam.jwd.online_training.dao.TransactionManager;
@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
 
     private static final Logger LOG = LogManager.getLogger(UserServiceImpl.class);
     private static UserDaoImpl userDao = DAOManager.getUserDao();
+
     private static final String FAIL_TO_GET_ALL_TEACHERS = "Failed getting instance all teachers from dao. ";
     private static final String FAIL_IN_LOGIN_PROCESS = "Failed in login process. ";
     private static final String FAIL_IN_PROCESS_OF_DELETING_USER = "Failed in process deleting user in service. ";

@@ -5,7 +5,7 @@ import epam.jwd.online_training.content.ActionResult;
 import epam.jwd.online_training.content.NavigationType;
 import epam.jwd.online_training.content.RequestContent;
 import epam.jwd.online_training.exception.CommandException;
-import epam.jwd.online_training.logic.ServiceManager;
+import epam.jwd.online_training.service.ServiceManager;
 
 public class LogoutCommand extends Command {
 

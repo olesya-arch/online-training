@@ -1,6 +1,7 @@
 package epam.jwd.online_training.dao;
 
 import epam.jwd.online_training.constant.EntityAttribute;
+import epam.jwd.online_training.dto.CourseDto;
 import epam.jwd.online_training.dto.TaskDto;
 import epam.jwd.online_training.dto.TaskReviewDto;
 import epam.jwd.online_training.entity.*;
@@ -17,6 +18,8 @@ public class ResultSetParser {
     private static final String CANNOT_CREATE_USER = "Cannot create a user! ";
     private static final String CANNOT_CREATE_REVIEW = "Cannot create a review. ";
     private static final String CANNOT_CREATE_TASK = "Cannot create a task. ";
+    private static final String CANNOT_CREATE_COURSE = "Cannot create a course. ";
+    private static final String FAIL_CREATING_COURSE_DTO = "Fail creating course DTO while parsing. ";
 
     static User createUser(ResultSet resultSet) throws DaoException {
         User user = null;
@@ -83,5 +86,43 @@ public class ResultSetParser {
         Task task = createTask(resultSet);
         TaskReview taskReview = createTaskReview(resultSet);
         return new TaskDto(task, taskReview);
+    }
+
+    static Course createCourse(ResultSet resultSet) throws DaoException {
+        Course course = null;
+        try {
+            Integer id = resultSet.getInt(EntityAttribute.COURSE_ID);
+            String typeLine = resultSet.getString(EntityAttribute.COURSE_TYPE);
+            String typeValue = typeLine.toUpperCase();
+            CourseType courseType = CourseType.valueOf(typeValue);
+            int teacherId = resultSet.getInt(EntityAttribute.COURSE_TEACHER_ID);
+            String statusLine = resultSet.getString(EntityAttribute.COURSE_STATUS);
+            String statusValue = statusLine.toUpperCase();
+            CourseStatus courseStatus = CourseStatus.valueOf(statusValue);
+            Boolean isAvailable = resultSet.getBoolean(EntityAttribute.COURSE_IS_AVAILABLE);
+            String title = resultSet.getString(EntityAttribute.COURSE_TITLE);
+            String description = resultSet.getString(EntityAttribute.COURSE_DESCRIPTION);
+
+            course = new Course(id, courseType, teacherId, courseStatus, isAvailable, title, description);
+
+        } catch (SQLException e) {
+            LOG.error(CANNOT_CREATE_COURSE, e);
+            throw new DaoException(CANNOT_CREATE_COURSE, e);
+        }
+        return course;
+    }
+
+    static CourseDto createCourseDto(ResultSet resultSet) throws DaoException {
+        Course course = createCourse(resultSet);
+        User teacher = null;
+        try {
+            if (resultSet.getInt(EntityAttribute.USER_ID) != 0) {
+                teacher = createUser(resultSet);
+            }
+        } catch (SQLException e) {
+            LOG.error(FAIL_CREATING_COURSE_DTO, e);
+            throw new DaoException(FAIL_CREATING_COURSE_DTO, e);
+        }
+        return new CourseDto(course, teacher);
     }
 }
