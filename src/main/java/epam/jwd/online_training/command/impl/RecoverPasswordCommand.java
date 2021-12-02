@@ -20,7 +20,7 @@ public class RecoverPasswordCommand extends Command {
 
     private static final Logger LOG = LogManager.getLogger(RecoverPasswordCommand.class);
     private static final String ERROR_RECOVER_PASSWORD = "Fail to recover password for {} ";
-    private static final String EMAIL_PARAMETER = "email";
+    private static final String EMAIL_PARAMETER = "e_mail";
     private static final String MESSAGE_MAIL_SUBJECT = "mail.message.subject";
     private static final String MESSAGE_MAIL_TEXT = "mail.message.text";
     private static final String PASSWORD_CHANGE_SUCCESS_MESSAGE = "message.password.change-success";

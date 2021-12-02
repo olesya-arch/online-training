@@ -27,7 +27,7 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
     private static final String FAIL_DELETING_USER_BY_ID_EXCEPTION = "Failed deleting user by id in DAO.";
     private static final String ADDING_COURSE_TO_USER_EXCEPTION = "Exception occurred adding the course to user in DAO.";
     private static final String FAIL_ADDING_NEW_ACCOUNT_EXCEPTION = "Failed adding new account in DAO. ";
-    private static final String USER_ID = "u_t.id_user";
+    private static final String USER_ID = "u_a.id_account";
     private static final String USER_STATUS_IS_DELETED = "u_s.u_status";
     private static final String DELETE_TEACHER_BY_ID =
             "CALL deleteTeacher(?);";
