@@ -18,7 +18,7 @@ public class DeleteUserCommand extends Command {
 
     private static final Logger LOG = LogManager.getLogger(DeleteUserCommand.class);
     private static final String FAIL_EXECUTING_DELETE_USER_COMMAND = "Failed executing delete user command. ";
-    private static final String USER_ID_PARAMETER = "userid";
+    private static final String USER_ID_PARAMETER = "u_a.id_account";
     private static final String DELETE_SUCCESS_MESSAGE_KEY = "message.admin.teacher-delete-success";
     private static final String DELETE_FAIL_MESSAGE_KEY = "message.admin.teacher-delete-fail";
     private static final String GET_PAGE_URL_PARAMETER = "/controller?command=takeallteachers";

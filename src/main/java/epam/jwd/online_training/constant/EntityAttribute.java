@@ -29,4 +29,7 @@ public final class EntityAttribute {
     public static final String TASK_REVIEW_COMMENT = "tr.teacher_comment";
     public static final String TASK_REVIEW_MARK = "tr.mark";
 
+    public EntityAttribute(){
+    }
+
 }

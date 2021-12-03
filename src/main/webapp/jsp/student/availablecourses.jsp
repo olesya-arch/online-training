@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -8,14 +8,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><fmt:message key="label.student.title" bundle="${rb}"/></title>
+    <title>Available courses</title>
 </head>
 <body>
 <jsp:include page="../../jsp/student/parts/header.jsp"/>
 
-<H1 align="center"><fmt:message key="label.student.joined-courses" bundle="${rb}"/></H1>
+<H1 align="center"><fmt:message key="label.availablecourses.h1" bundle="${rb}"/></H1>
 
 <div class="container theme-showcase" role="main">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4"></div>
     <div class="row">
         <div class="col-md-12">
             <br/>
@@ -27,20 +32,29 @@
                     <th><fmt:message key="label.availablecourses.title" bundle="${rb}"/></th>
                     <th><fmt:message key="label.availablecourses.description" bundle="${rb}"/></th>
                     <th><fmt:message key="label.allcourses.teacher-fullname" bundle="${rb}"/></th>
+                    <th width="80"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${requestScope.takenCourses}" var="courses">
+                <c:forEach items="${requestScope.availableCourses}" var="courses">
                     <tr>
                         <td>${course.type}</td>
                         <td>${course.status}</td>
                         <td>${course.title}</td>
                         <td>${course.description}</td>
                         <td>${course.teacher.lastName} ${course.teacher.firstName}</td>
+                        <td>
+                            <form method="post" action="/controller">
+                                <input type="hidden"  name="command" value="joincourse" />
+                                <input type="hidden"  name="c.id_course" value="${course.id}" />
+                                <button type="submit" class="btn btn-success"><fmt:message key="label.availablecourses.join-course" bundle="${rb}"/></button>
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
