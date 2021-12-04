@@ -69,7 +69,7 @@
                             <form method="GET" action="/controller">
                                 <input type="hidden" name="command" value="getPage" />
                                 <input type="hidden"  name="expectedPage" value="reviewtask" />
-                                <input type="hidden"  name="user_id" value="${reviews.userId}" />
+                                <input type="hidden"  name="student_id" value="${reviews.studentId}" />
                                 <input type="hidden"  name="task_id" value="${reviews.taskId}" />
                                 <button type="submit" class="btn btn-info"><fmt:message key="label.taskreviews.review-btn" bundle="${rb}"/></button>
                             </form>

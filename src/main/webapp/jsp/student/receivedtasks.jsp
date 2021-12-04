@@ -35,36 +35,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${requestScope.receivedTasks}" var="tasks">
+                <c:forEach items="${requestScope.receivedTasks}" var="task">
                     <tr>
-                        <td>${tasks.name}</td>
-                        <td>${tasks.description}</td>
+                        <td>${task.title}</td>
+                        <td>${task.description}</td>
                         <td>
                             <c:choose>
-                                <c:when test="${tasks.review.mark eq 0}">
+                                <c:when test="${task.taskreview.mark eq 0}">
                                     <fmt:message key="label.receivedtasks.tasknotreviewed" bundle="${rb}"/>
                                 </c:when>
                                 <c:otherwise>
-                                    ${tasks.review.mark}
+                                    ${task.review.mark}
                                 </c:otherwise>
                             </c:choose>
                         </td>
-                        <td>${tasks.review.review}</td>
-                        <td>
-                            <c:choose>
-                                <c:when test="${tasks.review.mark eq 0}">
-                                    <form method="POST" action="/controller">
-                                        <input type="hidden"  name="command" value="getpage" />
-                                        <input type="hidden"  name="expectedPage" value="sendanswer" />
-                                        <input type="hidden"  name="taskid" value="${tasks.id}" />
-                                        <button type="submit" class="btn btn-success"><fmt:message key="label.receivedtasks.send-answer" bundle="${rb}"/></button>
-                                    </form>
-                                </c:when>
-                                <c:otherwise>
-                                    <fmt:message key="label.receivedtasks.tasksended" bundle="${rb}"/>
-                                </c:otherwise>
-                            </c:choose>
-                        </td>
+                        <td>${task.review.review}</td>
+
                     </tr>
                 </c:forEach>
                 </tbody>

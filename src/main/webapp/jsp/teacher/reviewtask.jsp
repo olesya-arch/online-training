@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Related tasks</title>
+    <title>Task review</title>
 </head>
 <body>
 <jsp:include page="../../jsp/teacher/parts/header.jsp"/>
@@ -28,7 +28,7 @@
     <dt><fmt:message key="label.reviewtask.answer" bundle="${rb}"/></dt>
     <dd>
         <c:forEach items="${sessionScope.reviewsAndUsers}" var="reviews">
-            <c:if test="${reviews.userId eq param.user_id and reviews.taskId eq param.task_id}">
+            <c:if test="${reviews.studentId eq param.student_id and reviews.taskId eq param.task_id}">
                 ${reviews.answer}
             </c:if>
         </c:forEach>
@@ -47,14 +47,14 @@
         <form name="editCourseForm" method="GET" action="/controller">
             <input type="hidden" name="command" value="sendreview"/>
             <input type="hidden" name="task_id" value="${param.task_id}"/>
-            <input type="hidden" name="user_id" value="${param.user_id}"/>
+            <input type="hidden" name="student_id" value="${param.student_id}"/>
 
             <div class="control-group">
                 <!-- Mark -->
-                <label for="task_mark"><fmt:message
+                <label for="mark"><fmt:message
                         key="label.reviewtask.mark" bundle="${rb}"/></label>
                 <div class="controls">
-                    <select name="task_mark" id="task_mark" required class="form-control">
+                    <select name="task_mark" id="mark" required class="form-control">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -71,9 +71,9 @@
             <div class="control-group">
                 <!-- Review -->
                 <div class="form-group">
-                    <label for="task_review"><fmt:message
+                    <label for="teacher_comment"><fmt:message
                             key="label.reviewtask.review" bundle="${rb}"/></label>
-                    <textarea class="form-control" id="task_review" name="task_review" rows="10"></textarea>
+                    <textarea class="form-control" id="teacher_comment" name="teacher_comment" rows="10"></textarea>
                 </div>
             </div>
 

@@ -40,10 +40,10 @@
 
             <div class="control-group">
                 <!-- Title -->
-                <label class="control-label" for="task_name"><fmt:message
+                <label class="control-label" for="t_title"><fmt:message
                         key="label.addtask.task-title" bundle="${rb}"/><span class="required">*</span></label>
                 <div class="controls">
-                    <input type="text" class="form-control" id="task_name" name="task_name"
+                    <input type="text" class="form-control" id="t_title" name="t_title"
                            required="" pattern="[А-Яа-я\w\s.,?!-+#%_()]{5,45}"/>
                     <p class="help-block"><fmt:message key="label.addtask.task-title-help" bundle="${rb}"/></p>
                 </div>
@@ -51,10 +51,10 @@
 
             <div class="control-group">
                 <!-- Description -->
-                <label class="control-label" for="task_description"><fmt:message
+                <label class="control-label" for="description"><fmt:message
                         key="label.addtask.task-description" bundle="${rb}"/><span class="required">*</span></label>
                 <div class="controls">
-                    <textarea type="text" rows="8" class="form-control" id="task_description" name="task_description"
+                    <textarea type="text" rows="8" class="form-control" id="description" name="description"
                               required="" pattern="[А-Яа-я\w\s.,?!-+#%_()]{5,450}"></textarea>
                     <p class="help-block"><fmt:message key="label.addtask.task-description-help" bundle="${rb}"/></p>
                 </div>

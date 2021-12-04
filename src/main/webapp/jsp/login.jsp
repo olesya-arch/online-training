@@ -30,10 +30,10 @@
                 <h2 class="form-signin-heading" align="center"><fmt:message key="label.login.header" bundle="${rb}"/></h2>
                 <br>
                 <label for="inputEmail" class="sr-only"><fmt:message key="label.registration.email" bundle="${rb}"/></label>
-                <input type="email" name="user_email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="email" name="u_a.e_mail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <br>
                 <label for="inputPassword" class="sr-only"><fmt:message key="label.registration.password" bundle="${rb}"/></label>
-                <input type="password" name="user_password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" name="u_a.u_password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="label.login.login-button" bundle="${rb}" /></button>
                 <br>

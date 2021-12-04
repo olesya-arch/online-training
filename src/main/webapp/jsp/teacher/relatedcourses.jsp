@@ -30,19 +30,19 @@
                     <table class="table table-striped table-bordered table-condensed">
                         <thead>
                         <tr>
-                            <th><fmt:message key="label.availablecourses.title" bundle="${rb}"/></th>
-                            <th><fmt:message key="label.availablecourses.subject-language" bundle="${rb}"/></th>
-                            <th><fmt:message key="label.availablecourses.subject-level" bundle="${rb}"/></th>
+                            <th><fmt:message key="label.availablecourses.type-language" bundle="${rb}"/></th>
                             <th><fmt:message key="label.availablecourses.status" bundle="${rb}"/></th>
+                            <th><fmt:message key="label.availablecourses.title" bundle="${rb}"/></th>
+                            <th><fmt:message key="label.availablecourses.description" bundle="${rb}"/></th>
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${sessionScope.relatedCourses}" var="courses">
                             <tr>
-                                <td>${courses.title}</td>
-                                <td>${courses.subject.language}</td>
-                                <td>${courses.subject.level}</td>
+                                <td>${courses.type}</td>
                                 <td>${courses.status}</td>
+                                <td>${courses.title}</td>
+                                <td>${courses.description}</td>
                             </tr>
                         </c:forEach>
                         </tbody>

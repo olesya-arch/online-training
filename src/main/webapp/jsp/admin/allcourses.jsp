@@ -34,16 +34,16 @@
                 <tbody>
                 <c:forEach items="${sessionScope.allCourses}" var="courses">
                     <tr>
-                        <td>${course.type}</td>
-                        <td>${course.status}</td>
-                        <td>${course.title}</td>
-                        <td>${course.description}</td>
-                        <td>${course.teacher.id}</td>
-                        <td>${course.teacher.lastName} ${course.teacher.firstName}</td>
+                        <td>${courses.type}</td>
+                        <td>${courses.status}</td>
+                        <td>${courses.title}</td>
+                        <td>${courses.description}</td>
+                        <td>${courses.teacher.id}</td>
+                        <td>${courses.teacher.lastName} ${courses.teacher.firstName}</td>
                         <td>
                             <form method="GET" action="/controller">
                                 <input type="hidden"  name="command" value="editcourse" />
-                                <input type="hidden"  name="course_id" value="${courses.id}" />
+                                <input type="hidden"  name="c.id_course" value="${courses.id}" />
                                 <button type="submit" class="btn btn-warning"><fmt:message key="label.allcourses.edit-btn" bundle="${rb}"/></button>
                             </form>
                         </td>

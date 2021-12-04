@@ -31,7 +31,7 @@
                   <select name="ct.category" id="ct.category" required class="form-control">
                       <option value="ENGLISH"><fmt:message key="label.addcourse.course-type-english" bundle="${rb}"/></option>
                       <option value="GERMAN"><fmt:message key="label.addcourse.course-type-german" bundle="${rb}"/></option>
-                      <option value="CHINESE"><fmt:message key="label.addcourse.course-chinese" bundle="${rb}"/></option>
+                      <option value="CHINESE"><fmt:message key="label.addcourse.course-type-chinese" bundle="${rb}"/></option>
                       <option value="FRENCH"><fmt:message key="label.addcourse.course-type-french" bundle="${rb}"/></option>
                       <option value="LATVIAN"><fmt:message key="label.addcourse.course-type-latvian" bundle="${rb}"/></option>
                   </select>

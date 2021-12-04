@@ -35,13 +35,13 @@
                 <c:forEach items="${sessionScope.allCourses}" var="courses">
                     <c:if test="${courses.id eq param.course_id}">
                         <tr>
-                            <td>${course.id}</td>
-                            <td>${course.type}</td>
-                            <td>${course.status}</td>
-                            <td>${course.title}</td>
-                            <td>${course.description}</td>
-                            <td>${course.teacher.id}</td>
-                            <td>${course.teacher.lastName} ${course.teacher.firstName}</td>
+                            <td>${courses.id}</td>
+                            <td>${courses.type}</td>
+                            <td>${courses.status}</td>
+                            <td>${courses.title}</td>
+                            <td>${courses.description}</td>
+                            <td>${courses.teacher.id}</td>
+                            <td>${courses.teacher.lastName} ${courses.teacher.firstName}</td>
                         </tr>
                     </c:if>
                 </c:forEach>

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <fmt:setLocale value="${locale}" scope="session"/>
-<fmt:setBundle basename="localedata" var="rb"/>
+<fmt:setBundle basename="pagecontent" var="rb"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +74,7 @@
                             <td>
                                 <form method="GET" action="/controller">
                                     <input type="hidden" name="command" value="takereviewsbytaskid"/>
-                                    <input type="hidden" name="taskid" value="${tasks.id}"/>
+                                    <input type="hidden" name="id_task" value="${tasks.id}"/>
                                     <button type="submit" class="btn btn-info"><fmt:message
                                             key="label.relatedtasks.task-info-btn" bundle="${rb}"/></button>
                                 </form>

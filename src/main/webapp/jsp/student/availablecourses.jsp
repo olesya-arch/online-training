@@ -38,15 +38,15 @@
                 <tbody>
                 <c:forEach items="${requestScope.availableCourses}" var="courses">
                     <tr>
-                        <td>${course.type}</td>
-                        <td>${course.status}</td>
-                        <td>${course.title}</td>
-                        <td>${course.description}</td>
-                        <td>${course.teacher.lastName} ${course.teacher.firstName}</td>
+                        <td>${courses.type}</td>
+                        <td>${courses.status}</td>
+                        <td>${courses.title}</td>
+                        <td>${courses.description}</td>
+                        <td>${courses.teacher.lastName} ${courses.teacher.firstName}</td>
                         <td>
                             <form method="post" action="/controller">
                                 <input type="hidden"  name="command" value="joincourse" />
-                                <input type="hidden"  name="c.id_course" value="${course.id}" />
+                                <input type="hidden"  name="id_course" value="${courses.id}" />
                                 <button type="submit" class="btn btn-success"><fmt:message key="label.availablecourses.join-course" bundle="${rb}"/></button>
                             </form>
                         </td>

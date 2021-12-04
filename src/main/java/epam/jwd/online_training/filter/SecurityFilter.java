@@ -28,28 +28,26 @@ public class SecurityFilter implements Filter {
         accessMap.put("LOGOUT", "ALL");
         accessMap.put("SIGNUP", "ALL");
         accessMap.put("LOCALE", "ALL");
-        accessMap.put("GET_PAGE", "ALL");
- //       accessMap.put("RECOVER_PASSWORD", "ALL");
+        accessMap.put("GETPAGE", "ALL");
+        accessMap.put("RECOVERPASSWORD", "ALL");
 
-        accessMap.put("ADD_TEACHER", "ADMIN");
-        accessMap.put("GET_STATISTIC", "ADMIN");
-        accessMap.put("TAKE_ALL_TEACHERS", "ADMIN");
-        accessMap.put("DELETE_USER", "ADMIN");
-        accessMap.put("TAKE_ALL_COURSES", "ADMIN");
-        accessMap.put("EDIT_COURSE", "ADMIN");
-        accessMap.put("ADD_COURSE", "ADMIN");
+        accessMap.put("ADDCOURSE", "ADMIN");
+        accessMap.put("ADDTEACHER", "ADMIN");
+        accessMap.put("TAKEALLTEACHERS", "ADMIN");
+        accessMap.put("TAKEALLCOURSES", "ADMIN");
+        accessMap.put("EDITCOURSE", "ADMIN");
+        accessMap.put("DELETEUSER", "ADMIN");
 
-        accessMap.put("TAKE_TEACHER_RELATED_COURSES", "TEACHER");
-        accessMap.put("TAKE_COURSE_RELATED_TASKS", "TEACHER");
-        accessMap.put("TAKE_REVIEWS_BY_TASK_ID", "TEACHER");
-        accessMap.put("SEND_REVIEW", "TEACHER");
-        accessMap.put("ADD_TASK", "TEACHER");
+        accessMap.put("TAKETEACHERRELATEDCOURSES", "TEACHER");
+        accessMap.put("TAKECOURSERELATEDTASKS", "TEACHER");
+        accessMap.put("TAKEREVIEWSBYTASKID", "TEACHER");
+        accessMap.put("SENDREVIEW", "TEACHER");
+        accessMap.put("ADDTASK", "TEACHER");
 
-        accessMap.put("TAKE_AVAILABLE_COURSES", "STUDENT");
-        accessMap.put("JOIN_COURSE", "STUDENT");
-        accessMap.put("GET_TAKEN_COURSES", "STUDENT");
-        accessMap.put("TAKE_RECEIVED_TASKS", "STUDENT");
-        accessMap.put("SEND_ANSWER", "STUDENT");
+        accessMap.put("TAKEAVAILABLECOURSES", "STUDENT");
+        accessMap.put("TAKERECEIVEDTASKS", "STUDENT");
+        accessMap.put("GETTAKENCOURSES", "STUDENT");
+        accessMap.put("JOINCOURSE", "STUDENT");
     }
 
     @Override

@@ -32,11 +32,11 @@
                 <tbody>
                 <c:forEach items="${requestScope.takenCourses}" var="courses">
                     <tr>
-                        <td>${course.type}</td>
-                        <td>${course.status}</td>
-                        <td>${course.title}</td>
-                        <td>${course.description}</td>
-                        <td>${course.teacher.lastName} ${course.teacher.firstName}</td>
+                        <td>${courses.type}</td>
+                        <td>${courses.status}</td>
+                        <td>${courses.title}</td>
+                        <td>${courses.description}</td>
+                        <td>${courses.teacher.lastName} ${courses.teacher.firstName}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
