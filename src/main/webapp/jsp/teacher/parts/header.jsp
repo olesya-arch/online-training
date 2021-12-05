@@ -10,7 +10,6 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="../../../css/bootstrap.css">
-  <link rel="icon" href="../../../fonts/favicon.ico">
 </head>
 
 <body>

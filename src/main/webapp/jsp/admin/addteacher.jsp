@@ -20,8 +20,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../fonts/favicon.ico">
-    <title>Registration</title>
+      <title>Registration</title>
 </head>
 <body>
 <jsp:include page="../../jsp/admin/parts/header.jsp"/>
@@ -36,18 +35,18 @@
 
                 <div class="control-group">
                     <!-- E-mail -->
-                    <label class="control-label" for="email"><fmt:message key="label.registration.email" bundle="${rb}"/><span class="required">*</span></label>
+                    <label class="control-label" for="e_mail"><fmt:message key="label.registration.email" bundle="${rb}"/><span class="required">*</span></label>
                     <div class="controls">
-                        <input type="email" id="email" name="u_a.e_mail" value="${failEmail}" required="" class="form-control" placeholder="email@example.com" />
+                        <input type="email" id="e_mail" name="e_mail" value="${failEmail}" required="" class="form-control" placeholder="email@example.com" />
                         <p class="help-block"><fmt:message key="label.t.registration.email.help" bundle="${rb}"/></p>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <!-- Password -->
-                    <label class="control-label" for="password"><fmt:message key="label.registration.password" bundle="${rb}"/><span class="required">*</span></label>
+                    <label class="control-label" for="u_password"><fmt:message key="label.registration.password" bundle="${rb}"/><span class="required">*</span></label>
                     <div class="controls">
-                        <input type="password" id="password" name="u_a.u_password" required="" class="form-control"  pattern="^[a-zA-Z0-9-_\.]{4,20}$"/>
+                        <input type="password" id="u_password" name="u_password" required="" class="form-control"  pattern="^[a-zA-Z0-9-_\.]{4,20}$"/>
                         <p class="help-block"><fmt:message key="label.registration.password.help" bundle="${rb}"/></p>
                     </div>
                 </div>
@@ -65,7 +64,7 @@
                     <!-- First Name -->
                     <label class="control-label" for="first_name"><fmt:message key="label.registration.name" bundle="${rb}"/><span class="required">*</span></label>
                     <div class="controls">
-                        <input type="text" id="first_name" name="u_a.first_name" value="${failFirstName}" required="" class="form-control" placeholder="Иван" pattern="^[А-ЯA-Z][a-яa-z]{2,30}"/>
+                        <input type="text" id="first_name" name="first_name" value="${failFirstName}" required="" class="form-control" placeholder="Иван" pattern="^[А-ЯA-Z][a-яa-z]{2,30}"/>
                         <p class="help-block"><fmt:message key="label.registration.name.help" bundle="${rb}"/></p>
                     </div>
                 </div>
@@ -74,7 +73,7 @@
                     <!-- Last Name -->
                     <label class="control-label" for="last_name"><fmt:message key="label.registration.last-name" bundle="${rb}"/><span class="required">*</span></label>
                     <div class="controls">
-                        <input type="text" id="last_name" name="u_a.last_name" value="${failLastName}" required="" class="form-control" placeholder="Иванов" pattern="^[А-ЯA-Z][a-яa-z]{2,30}"/>
+                        <input type="text" id="last_name" name="last_name" value="${failLastName}" required="" class="form-control" placeholder="Иванов" pattern="^[А-ЯA-Z][a-яa-z]{2,30}"/>
                         <p class="help-block"><fmt:message key="label.registration.last-name.help" bundle="${rb}"/></p>
                     </div>
                 </div>

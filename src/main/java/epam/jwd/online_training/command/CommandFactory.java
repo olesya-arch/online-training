@@ -8,7 +8,7 @@ public class CommandFactory {
 
     public Command initCommand(RequestContent content) {
         Command command = null;
-        String commandName = null;
+        String commandName;
         String enteringCommandName = content.getSingleRequestParameter(COMMAND_PARAMETER);
         if (enteringCommandName != null && !enteringCommandName.isEmpty()) {
             commandName = enteringCommandName.toUpperCase();

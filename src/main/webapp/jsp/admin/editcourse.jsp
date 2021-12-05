@@ -57,21 +57,21 @@
 
             <form name="editCourseForm" method="POST" action="/controller">
                 <input type="hidden" name="command" value="editcourse"/>
-                <input type="hidden" name="c.id_course" value="${param.course_id}"/>
+                <input type="hidden" name="id_course" value="${param.course_id}"/>
 
 
 
 
             <div class="control-group">
             <!-- Course type -->
-            <label class="control-label" for="ct.category"><fmt:message key="label.editcourse.course-type"
+            <label class="control-label" for="category"><fmt:message key="label.editcourse.course-type"
                                                                             bundle="${rb}"/><span
               class="required">*</span></label>
               <div class="controls">
-                  <select name="ct.category" id="ct.category" required class="form-control">
+                  <select name="category" id="category" required class="form-control">
                       <option value="ENGLISH"><fmt:message key="label.addcourse.course-type-english" bundle="${rb}"/></option>
                       <option value="GERMAN"><fmt:message key="label.addcourse.course-type-german" bundle="${rb}"/></option>
-                      <option value="CHINESE"><fmt:message key="label.addcourse.course-chinese" bundle="${rb}"/></option>
+                      <option value="CHINESE"><fmt:message key="label.addcourse.course-type-chinese" bundle="${rb}"/></option>
                       <option value="FRENCH"><fmt:message key="label.addcourse.course-type-french" bundle="${rb}"/></option>
                       <option value="LATVIAN"><fmt:message key="label.addcourse.course-type-latvian" bundle="${rb}"/></option>
                   </select>
@@ -81,10 +81,10 @@
             <div class="control-group">
                 <!-- Related teacher -->
                 <label class="control-label"
-                       for="c.teacher_id"><fmt:message key="label.editcourse.teacher"
+                       for="teacher_id"><fmt:message key="label.editcourse.teacher"
                                                             bundle="${rb}"/></label>
                 <div class="controls">
-                    <select name="c.teacher_id" id="c.teacher_id" required class="form-control">
+                    <select name="teacher_id" id="teacher_id" required class="form-control">
                         <option value="0"><fmt:message key="label.addcourse.course-without-teacher" bundle="${rb}"/></option>
                         <c:forEach items="${sessionScope.allTeachers}" var="teachers">
                             <option value="${teachers.id}">${teachers.lastName} ${teachers.firstName}</option>
@@ -95,11 +95,11 @@
 
             <div class="control-group">
                 <!-- Course status -->
-                <label class="control-label" for="cs.course_status"><fmt:message key="label.editcourse.status"
+                <label class="control-label" for="course_status"><fmt:message key="label.editcourse.status"
                                                                               bundle="${rb}"/><span
                         class="required">*</span></label>
                 <div class="controls">
-                    <select name="cs.course_status" id="cs.course_status" required class="form-control">
+                    <select name="course_status" id="course_status" required class="form-control">
                         <option value="OPEN"><fmt:message key="label.addcourse.course-status-open" bundle="${rb}"/></option>
                         <option value="IN_PROCESS"><fmt:message key="label.addcourse.course-status-in-process" bundle="${rb}"/></option>
                         <option value="CLOSED"><fmt:message key="label.addcourse.course-status-closed" bundle="${rb}"/></option>
@@ -110,10 +110,10 @@
 
             <div class="control-group">
                 <!-- Course Availability -->
-                <label class="control-label" for="c.is_available"><fmt:message
+                <label class="control-label" for="is_available"><fmt:message
                         key="label.editcourse.availability" bundle="${rb}"/><span class="required">*</span></label>
                 <div class="controls">
-                    <select name="c.is_available" id="c.is_available" required class="form-control">
+                    <select name="is_available" id="is_available" required class="form-control">
                         <option value="1"><fmt:message key="label.addcourse.course-available" bundle="${rb}"/></option>
                         <option value="0"><fmt:message key="label.addcourse.course-unavailable" bundle="${rb}"/></option>
                     </select>
@@ -122,10 +122,10 @@
 
             <div class="control-group">
                 <!-- Title -->
-                <label class="control-label" for="c.c_title"><fmt:message
+                <label class="control-label" for="c_title"><fmt:message
                         key="label.editcourse.course-title" bundle="${rb}"/><span class="required">*</span></label>
                 <div class="controls">
-                    <input type="text" class="form-control" id="c.c_title" name="c.c_title"
+                    <input type="text" class="form-control" id="c_title" name="c_title"
                            required="" pattern="[А-Яа-я\w\s.,?!-+#%_()]{5,75}"/>
                     <p class="help-block"><fmt:message key="label.editcourse.course-title-help" bundle="${rb}"/></p>
                 </div>
@@ -133,10 +133,10 @@
 
             <div class="control-group">
                 <!-- Description -->
-                <label class="control-label" for="c.c_description"><fmt:message
+                <label class="control-label" for="c_description"><fmt:message
                         key="label.editcourse.course-description" bundle="${rb}"/><span class="required">*</span></label>
                 <div class="controls">
-                    <input type="text" class="form-control" id="c.c_description" name="c.c_description"
+                    <input type="text" class="form-control" id="c_description" name="c_description"
                            required="" pattern="[А-Яа-я\w\s.,?!-+#%_()]{5,275}"/>
                     <p class="help-block"><fmt:message key="label.editcourse.course-description-help" bundle="${rb}"/></p>
                 </div>

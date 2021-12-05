@@ -10,7 +10,6 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../../css/bootstrap.css">
-    <link rel="icon" href="../../../fonts/favicon.ico">
 </head>
 
 <body>
@@ -41,11 +40,7 @@
                         <li><a href="/controller?command=takeallcourses"><fmt:message key="label.navbar.admin.viewcourses"  bundle="${rb}"/></a></li>
                         <li><a href="/controller?command=addcourse"><fmt:message key="label.navbar.admin.addcourse" bundle="${rb}"/></a></li>
                     </ul>
-                </li>
-                <li><a href="/controller?command=getstatistic"><fmt:message key="label.navbar.admin.statistic"  bundle="${rb}"/></a></li>
-            </ul>
-            <ul class="nav navbar-nav active pull-right">
-                <li>
+
                     <form action="/controller">
                         <input type="hidden" name="command" value="locale">
                         <button type="submit" class="btn btn-default navbar-btn" name="locale" value="RU" >RU</button>

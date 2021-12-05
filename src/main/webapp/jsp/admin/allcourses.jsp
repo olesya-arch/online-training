@@ -43,7 +43,7 @@
                         <td>
                             <form method="GET" action="/controller">
                                 <input type="hidden"  name="command" value="editcourse" />
-                                <input type="hidden"  name="c.id_course" value="${courses.id}" />
+                                <input type="hidden"  name="id_course" value="${courses.id}" />
                                 <button type="submit" class="btn btn-warning"><fmt:message key="label.allcourses.edit-btn" bundle="${rb}"/></button>
                             </form>
                         </td>

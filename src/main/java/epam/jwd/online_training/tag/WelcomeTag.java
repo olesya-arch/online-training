@@ -14,11 +14,10 @@ import java.util.ResourceBundle;
 public class WelcomeTag extends TagSupport {
 
     private static final Logger LOG = LogManager.getLogger(WelcomeTag.class);
-    private static final String MESSAGE_BEGIN_KEY = "label.main_page.begin";
-    private static final String MESSAGE_END_ADMIN_KEY = "label.main_page.end-admin";
-    private static final String MESSAGE_END_TEACHER_KEY = "label.main_page.end-teacher";
-    private static final String MESSAGE_END_STUDENT_KEY = "label.main_page.end-student";
-    private static final String MESSAGE_END_GUEST_KEY = "label.main_page.end-guest";
+    private static final String MESSAGE_BEGIN_KEY = "label.mainpage.begin";
+    private static final String MESSAGE_END_ADMIN_KEY = "label.mainpage.end-admin";
+    private static final String MESSAGE_END_TEACHER_KEY = "label.mainpage.end-teacher";
+    private static final String MESSAGE_END_STUDENT_KEY = "label.mainpage.end-student";
     private static final String OUTPUT_FORMAT_BEGIN = "<hr><h2 align=\"center\">";
     private static final String OUTPUT_FORMAT_END = "</h2><hr>";
 
@@ -50,10 +49,8 @@ public class WelcomeTag extends TagSupport {
             messageEnd = resourceBundle.getString(MESSAGE_END_ADMIN_KEY);
         } else if (role == UserRole.TEACHER) {
             messageEnd = resourceBundle.getString(MESSAGE_END_TEACHER_KEY);
-        } else if (role == UserRole.STUDENT) {
-            messageEnd = resourceBundle.getString(MESSAGE_END_STUDENT_KEY);
         } else {
-            messageEnd = resourceBundle.getString(MESSAGE_END_GUEST_KEY);
+            messageEnd = resourceBundle.getString(MESSAGE_END_STUDENT_KEY);
         }
         String outputMessage = messageBegin + fullName + messageEnd;
         try {

@@ -19,7 +19,7 @@ import java.util.List;
 public class TakeAllTeachersCommand extends Command {
 
     private static final Logger LOG = LogManager.getLogger(TakeAllTeachersCommand.class);
-    private static final String ALL_TEACHERS_PATH = PagePathManager.getProperty("path.page.all_teachers");
+    private static final String ALL_TEACHERS_PATH = PagePathManager.getProperty("path.page.allteachers");
     private static final String SHOWING_ALL_TEACHERS_COMMAND_EXCEPTION =
             "Exception occurred during showing all teachers command ";
 
