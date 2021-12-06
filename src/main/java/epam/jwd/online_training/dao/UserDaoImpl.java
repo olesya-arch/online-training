@@ -1,7 +1,6 @@
 package epam.jwd.online_training.dao;
 
 import epam.jwd.online_training.connection.ProxyConnection;
-import epam.jwd.online_training.entity.BaseEntity;
 import epam.jwd.online_training.entity.User;
 import epam.jwd.online_training.entity.UserRole;
 import epam.jwd.online_training.exception.DaoException;
@@ -85,7 +84,7 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 
     @Override
     public User findUserByEmailAndPassword(String email, String password) throws DaoException {
-        BaseEntity user = null;
+        User user = null;
         ProxyConnection proxyConnection = connectionThreadLocal.get();
         try(PreparedStatement statement = proxyConnection.prepareStatement(FIND_USER_BY_EMAIL_AND_PASSWORD)) {
             statement.setString(1, email);
@@ -98,7 +97,7 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
             LOG.error(NOT_FOUND_USER_BY_EMAIL_AND_PASSWORD_EXCEPTION, e);
             throw new DaoException(NOT_FOUND_USER_BY_ROLE_EXCEPTION, e);
         }
-        return (User) user;
+        return user;
     }
 
     @Override

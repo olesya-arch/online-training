@@ -64,7 +64,7 @@ public class StudentSignUpCommand extends Command {
             LOG.error(ERROR_DURING_SIGN_UP);
             throw new CommandException(ERROR_DURING_SIGN_UP);
         }
-        String targetPagePath = null;
+        String targetPagePath;
         if (isRegistered) {
             targetPagePath = LOGIN_PAGE_PATH;
         } else {

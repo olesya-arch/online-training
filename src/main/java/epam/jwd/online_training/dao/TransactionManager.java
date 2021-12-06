@@ -71,7 +71,7 @@ public class TransactionManager implements AutoCloseable {
         }
         connectionThreadLocal.set(connection);
         for (AbstractDao dao : daos) {
-            dao.insertConnection(connection);
+            AbstractDao.insertConnection(connection);
         }
     }
 

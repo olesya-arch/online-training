@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form class="form-signin"  name="loginForm" method="POST" action="/controller">
+            <form class="form-signin"  name="loginForm" method="POST" action="<c:url value="/controller"/>">
 
                 <input type="hidden" name="command" value="login" />
 
@@ -38,7 +38,7 @@
                 <br>
 
             </form>
-            <a href="/controller?command=getPage&expectedPage=recovery"><fmt:message key="label.login.forgot-password" bundle="${rb}"/></a>
+            <a href="<c:url value="/controller?command=getPage&expectedPage=recovery"/>"><fmt:message key="label.login.forgot-password" bundle="${rb}"/></a>
         </div>
     </div>
 </div>

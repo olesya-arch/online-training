@@ -26,7 +26,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/controller?command=getPage&expectedPage=adminpage"><fmt:message key="label.navbar.admin.main"  bundle="${rb}"/></a></li>
+                <li><a href="<c:url value="/controller?command=getPage&expectedPage=adminpage"/>"><fmt:message key="label.navbar.admin.main"  bundle="${rb}"/></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><fmt:message key="label.navbar.admin.teachers"  bundle="${rb}"/><span class="caret"></span></a>
                     <ul class="dropdown-menu">

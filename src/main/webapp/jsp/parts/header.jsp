@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 
 <body>
@@ -26,8 +26,8 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp"><fmt:message key="label.navbar.admin.main"  bundle="${rb}"/></a></li>
-                <li><a href="/controller?command=getPage&expectedPage=registration"><fmt:message key="label.login.registration" bundle="${rb}"/></a></li>
-                <li><a href="/controller?command=getPage&expectedPage=login"><fmt:message key="label.login.login-button" bundle="${rb}"/></a></li>
+                <li><a href="${pageContext.request.contextPath}/controller?command=getPage&expectedPage=registration"><fmt:message key="label.login.registration" bundle="${rb}"/></a></li>
+                <li><a href="${pageContext.request.contextPath}/controller?command=getPage&expectedPage=login"><fmt:message key="label.login.login-button" bundle="${rb}"/></a></li>
             </ul>
             <ul class="nav navbar-nav active pull-right">
                 <li>
