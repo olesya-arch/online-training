@@ -37,10 +37,9 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
                     "u_a.u_password, " +
                     "u_a.first_name, " +
                     "u_a.last_name, " +
-                    "r.account_role, " +
+                    "u_a.account_role, " +
                     "u_s.u_status " +
             "from user_account as u_a " +
-                    "inner join role as r on u_a.account_role = r.id_role " +
             "inner join user_status as u_s on u_a.status_id = u_s.id_status " +
             "where r.account_role=? and u_s.id_status = 1";
 
@@ -50,10 +49,9 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
                     "u_a.u_password, " +
                     "u_a.first_name, " +
                     "u_a.last_name, " +
-                    "r.account_role, " +
+                    "u_a.account_role, " +
                     "u_s.u_status " +
                     "from user_account as u_a " +
-                    "inner join role as r on u_a.account_role = r.id_role " +
                     "inner join user_status as u_s on u_a.status_id = u_s.id_status " +
                     "where u_a.e_mail=? and u_a.u_password=?";
 

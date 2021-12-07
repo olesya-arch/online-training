@@ -68,7 +68,7 @@ public class SecurityFilter implements Filter {
             String command = commandValue.toUpperCase();
             HttpSession session = httpServletRequest.getSession();
             User user = (User) session.getAttribute(SESSION_ATTRIBUTE_USER);
-            String userRole = null;
+            String userRole;
             if (isUserAuthorized(user)) {
                 UserRole roleValue = user.getRole();
                 userRole = roleValue.toString();
