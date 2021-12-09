@@ -25,9 +25,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="index.jsp"><fmt:message key="label.navbar.admin.main"  bundle="${rb}"/></a></li>
-                <li><a href="${pageContext.request.contextPath}/controller?command=getPage&expectedPage=registration"><fmt:message key="label.login.registration" bundle="${rb}"/></a></li>
-                <li><a href="${pageContext.request.contextPath}/controller?command=getPage&expectedPage=login"><fmt:message key="label.login.login-button" bundle="${rb}"/></a></li>
+                <li><a href="/index.jsp"><fmt:message key="label.navbar.admin.main"  bundle="${rb}"/></a></li>
+                <li><a href="/controller?command=getPage&expectedPage=registration"><fmt:message key="label.login.registration" bundle="${rb}"/></a></li>
+                <li><a href="/controller?command=getPage&expectedPage=login"><fmt:message key="label.login.login-button" bundle="${rb}"/></a></li>
             </ul>
             <ul class="nav navbar-nav active pull-right">
                 <li>

@@ -35,18 +35,18 @@
 
                 <div class="control-group">
                     <!-- E-mail -->
-                    <label class="control-label" for="e_mail"><fmt:message key="label.registration.email" bundle="${rb}"/><span class="required">*</span></label>
+                    <label class="control-label" for="email"><fmt:message key="label.registration.email" bundle="${rb}"/><span class="required">*</span></label>
                     <div class="controls">
-                        <input type="email" id="e_mail" name="e_mail" value="${failEmail}" required="" class="form-control" placeholder="email@example.com" />
+                        <input type="email" id="email" name="e_mail" value="${failEmail}" required="" class="form-control" placeholder="email@example.com" />
                         <p class="help-block"><fmt:message key="label.registration.email.help" bundle="${rb}"/></p>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <!-- Password -->
-                    <label class="control-label" for="u_password"><fmt:message key="label.registration.password" bundle="${rb}"/><span class="required">*</span></label>
+                    <label class="control-label" for="password"><fmt:message key="label.registration.password" bundle="${rb}"/><span class="required">*</span></label>
                     <div class="controls">
-                        <input type="password" id="u_password" name="u_password" required="" class="form-control"  pattern="^[a-zA-Z0-9-_\.]{4,20}$"/>
+                        <input type="password" id="password" name="u_password" required="" class="form-control"  pattern="^[a-zA-Z0-9-_\.]{4,20}$"/>
                         <p class="help-block"><fmt:message key="label.registration.password.help" bundle="${rb}"/></p>
                     </div>
                 </div>

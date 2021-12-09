@@ -11,7 +11,6 @@ import java.io.IOException;
 public class PageRedirectSecurityFilter implements Filter {
 
     private static final String PATH_PAGE_INDEX = "path.page.index";
-
     private String indexPath;
 
     @Override
@@ -31,6 +30,5 @@ public class PageRedirectSecurityFilter implements Filter {
 
     @Override
     public void destroy() {
-        Filter.super.destroy();
     }
 }

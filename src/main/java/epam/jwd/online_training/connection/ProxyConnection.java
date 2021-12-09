@@ -11,7 +11,6 @@ import java.util.concurrent.Executor;
 public class ProxyConnection implements Connection {
 
     private static Logger LOG = LogManager.getLogger(ProxyConnection.class);
-    private static final String PROBLEM_WITH_CLOSING_CONNECTION = "Problem happened closing connection ";
 
     private Connection connection;
 

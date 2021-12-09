@@ -26,8 +26,8 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
     private static final String FAIL_DELETING_USER_BY_ID_EXCEPTION = "Failed deleting user by id in DAO.";
     private static final String ADDING_COURSE_TO_USER_EXCEPTION = "Exception occurred adding the course to user in DAO.";
     private static final String FAIL_ADDING_NEW_ACCOUNT_EXCEPTION = "Failed adding new account in DAO. ";
-    private static final String USER_ID = "u_a.id_account";
-    private static final String USER_STATUS_IS_DELETED = "u_s.u_status";
+    private static final String USER_ID = "id_account";
+    private static final String USER_STATUS_IS_DELETED = "status_id";
     private static final String DELETE_TEACHER_BY_ID =
             "CALL deleteTeacher(?);";
 
@@ -56,9 +56,8 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
                     "where u_a.e_mail=? and u_a.u_password=?";
 
     private static final String CHECK_USER_BY_EMAIL =
-            "select u_a.id_account, u_s.u_status " +
+            "select u_a.id_account, u_a.status_id " +
                     "from user_account as u_a " +
-                    "inner join user_status as u_s on u_a.status_id = u_s.id_status " +
                     "where u_a.e_mail=?";
 
     private static final String UPDATE_USER_PASSWORD =
@@ -109,7 +108,7 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 userId = resultSet.getInt(USER_ID);
-                isDeleted = (resultSet.getInt(USER_STATUS_IS_DELETED) == 1);
+                isDeleted = (resultSet.getInt(USER_STATUS_IS_DELETED) == 2);
             }
         } catch (SQLException e) {
             LOG.error(USER_NOT_FOUND_BY_EMAIL_EXCEPTION, email, e);

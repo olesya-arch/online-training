@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllTeachers() throws ServiceException {
         List<User> teachersList = null;
-        try(TransactionManager transactionManager = TransactionManager.launchTransaction(userDao)) {
+        try(TransactionManager transactionManager = TransactionManager.launchQuery(userDao)) {
             teachersList = userDao.findAllTeachers();
         } catch (SQLException | DaoException e) {
             LOG.error(FAIL_TO_GET_ALL_TEACHERS, e);
