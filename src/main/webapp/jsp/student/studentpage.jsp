@@ -7,7 +7,7 @@
 <fmt:setBundle basename="pagecontent" var="rb" />
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="EN">
 <head>
     <title>Student page</title>
 </head>

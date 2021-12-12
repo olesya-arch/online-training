@@ -6,7 +6,7 @@
 <fmt:setBundle basename="pagecontent" var="rb" />
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="EN">
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -33,13 +33,13 @@
                 <li>
                     <form action="/controller">
                         <input type="hidden" name="command" value="locale">
-                        <button type="submit" class="btn btn-default navbar-btn" name="locale" value="RU" >RU</button>
+                        <button type="submit" class="btn btn-default navbar-btn" name="locale" value="ru_RU" >RU</button>
                     </form>
                 </li>
                 <li>
                     <form action="/controller">
                         <input type="hidden" name="command" value="locale">
-                        <button type="submit" class="btn btn-default navbar-btn" name="locale" value="EN" >EN</button>
+                        <button type="submit" class="btn btn-default navbar-btn" name="locale" value="en_US" >EN</button>
                     </form>
                 </li>
             </ul>

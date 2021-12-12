@@ -24,7 +24,7 @@ public class LocaleCommand extends Command {
     @Override
     public ActionResult execute(RequestContent content) throws CommandException {
         String requestLocale = content.getSingleRequestParameter(SessionAttribute.LOCALE);
-        String locale = null;
+        String locale;
         if (EN_LOCALE_MARKER.equals(requestLocale)) {
             locale = EN_LOCALE_ATTRIBUTE;
         } else {
