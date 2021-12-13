@@ -14,7 +14,7 @@ public class PageRedirectSecurityFilter implements Filter {
     private String indexPath;
 
     @Override
-    public void init(FilterConfig filterConfig) {
+    public void init(FilterConfig filterConfig) throws ServletException {
         indexPath = PagePathManager.getProperty(PATH_PAGE_INDEX);
     }
 

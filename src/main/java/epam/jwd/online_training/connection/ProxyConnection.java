@@ -15,8 +15,7 @@ public class ProxyConnection implements Connection {
     private Connection connection;
 
     ProxyConnection(Connection connection) {
-        super();
-        this.connection = connection;
+       this.connection = connection;
     }
 
     @Override

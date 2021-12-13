@@ -23,26 +23,26 @@
             <input type="hidden" name="addCourse" value="go"/>
 
             <div class="control-group">
-            <!-- Course type -->
-            <label class="control-label" for="ct.category"><fmt:message key="label.editcourse.course-type"
+                <!-- Course type -->
+                <label class="control-label" for="ct.category"><fmt:message key="label.editcourse.course-type"
                                                                             bundle="${rb}"/><span
-              class="required">*</span></label>
-              <div class="controls">
-                  <select name="ct.category" id="ct.category" required class="form-control">
-                      <option value="ENGLISH"><fmt:message key="label.addcourse.course-type-english" bundle="${rb}"/></option>
-                      <option value="GERMAN"><fmt:message key="label.addcourse.course-type-german" bundle="${rb}"/></option>
-                      <option value="CHINESE"><fmt:message key="label.addcourse.course-type-chinese" bundle="${rb}"/></option>
-                      <option value="FRENCH"><fmt:message key="label.addcourse.course-type-french" bundle="${rb}"/></option>
-                      <option value="LATVIAN"><fmt:message key="label.addcourse.course-type-latvian" bundle="${rb}"/></option>
-                  </select>
-              </div>
+                        class="required">*</span></label>
+                <div class="controls">
+                    <select name="ct.category" id="ct.category" required class="form-control">
+                        <option value="ENGLISH"><fmt:message key="label.addcourse.course-type-english" bundle="${rb}"/></option>
+                        <option value="GERMAN"><fmt:message key="label.addcourse.course-type-german" bundle="${rb}"/></option>
+                        <option value="CHINESE"><fmt:message key="label.addcourse.course-type-chinese" bundle="${rb}"/></option>
+                        <option value="FRENCH"><fmt:message key="label.addcourse.course-type-french" bundle="${rb}"/></option>
+                        <option value="LATVIAN"><fmt:message key="label.addcourse.course-type-latvian" bundle="${rb}"/></option>
+                    </select>
+                </div>
             </div>
 
             <div class="control-group">
                 <!-- Related teacher -->
                 <label class="control-label"
                        for="teacher_id"><fmt:message key="label.editcourse.teacher"
-                                                            bundle="${rb}"/></label>
+                                                     bundle="${rb}"/></label>
                 <div class="controls">
                     <select name="teacher_id" id="teacher_id" required class="form-control">
                         <option value="0"><fmt:message key="label.addcourse.course-without-teacher" bundle="${rb}"/></option>

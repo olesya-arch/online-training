@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>Exception code: ${pageContext.errorData.statusCode}</h1>
-Requset from ${pageContext.errorData.requestURI} is failed
+Request from ${pageContext.errorData.requestURI} is failed
 <br/>
 Servlet name: ${pageContext.errorData.servletName}
 <br/>

@@ -6,7 +6,7 @@
 <fmt:setBundle basename="pagecontent" var="rb" />
 
 <!DOCTYPE html>
-<html lang="EN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="../../../css/bootstrap.css">
