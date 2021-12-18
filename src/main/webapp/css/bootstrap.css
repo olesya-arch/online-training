@@ -15,7 +15,7 @@ body {
     border-round: 5px;
 }
 .promo {
-    color: brown;
+    color: white;
     font-weight: bold;
     font-size: 60px;
     line-height: 70px;
@@ -4519,7 +4519,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     }
 }
 .navbar-default {
-    background-color: #4B0082;
+    background-color: #005082;
     border-color: #191970;
 }
 .navbar-default .navbar-brand {

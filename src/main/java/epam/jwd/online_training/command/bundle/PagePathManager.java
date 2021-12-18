@@ -6,7 +6,7 @@ public class PagePathManager {
 
     private static final String CONFIG_FILE_PATH = "config";
 
-    private static ResourceBundle resourceBundle = ResourceBundle.getBundle(CONFIG_FILE_PATH);
+    private static final ResourceBundle resourceBundle = ResourceBundle.getBundle(CONFIG_FILE_PATH);
 
     public PagePathManager() {
     }
