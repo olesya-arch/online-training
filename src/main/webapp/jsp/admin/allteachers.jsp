@@ -74,7 +74,7 @@
         </div>
     </div>
 </div>
-<jsp:include page="../../jsp/student/parts/footer.jsp"/>
+<jsp:include page="../../jsp/admin/parts/footer.jsp"/>
 </body>
 </html>
 

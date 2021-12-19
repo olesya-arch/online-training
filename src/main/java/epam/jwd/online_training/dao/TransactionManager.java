@@ -2,7 +2,6 @@ package epam.jwd.online_training.dao;
 
 import epam.jwd.online_training.connection.ConnectionPool;
 import epam.jwd.online_training.connection.ProxyConnection;
-import epam.jwd.online_training.exception.PoolException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -63,15 +62,10 @@ public class TransactionManager implements AutoCloseable {
     }
 
     private static void initialize(AbstractDao ...daos) {
-        ProxyConnection connection = null;
-        try {
-            connection = connectionPool.getConnection();
-        } catch (PoolException e) {
-            e.printStackTrace();
-        }
+        ProxyConnection connection = connectionPool.getConnection();
         connectionThreadLocal.set(connection);
         for (AbstractDao dao : daos) {
-            AbstractDao.insertConnection(connection);
+            dao.insertConnection(connection);
         }
     }
 

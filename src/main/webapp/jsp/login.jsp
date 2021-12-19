@@ -13,6 +13,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="icon" href="../fonts/favicon.ico">
     <title>Login into courses page</title>
 </head>
 <body>
