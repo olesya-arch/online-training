@@ -1,5 +1,6 @@
 package epam.jwd.online_training.filter;
 
+import epam.jwd.online_training.constant.SessionAttribute;
 import epam.jwd.online_training.entity.User;
 import epam.jwd.online_training.entity.UserRole;
 
@@ -19,7 +20,6 @@ public class SecurityFilter implements Filter {
     private static final String UNAUTHORIZED_ROLE = "ALL";
     private static final String INDEX_PAGE_PATH = "/index.jsp";
     private static final String INVALIDATE_SESSION_MARKER = "invalidate";
-    private static final String SESSION_ATTRIBUTE_USER = "user";
     Map<String, String> accessMap = new HashMap<>();
 
     @Override
@@ -67,7 +67,7 @@ public class SecurityFilter implements Filter {
         if (isCommandValid(commandValue)) {
             String command = commandValue.toUpperCase();
             HttpSession session = httpServletRequest.getSession();
-            User user = (User) session.getAttribute(SESSION_ATTRIBUTE_USER);
+            User user = (User) session.getAttribute(SessionAttribute.USER);
             String userRole;
             if (isUserAuthorized(user)) {
                 UserRole roleValue = user.getRole();
@@ -75,7 +75,7 @@ public class SecurityFilter implements Filter {
             } else {
                 userRole =UNAUTHORIZED_ROLE;
             }
-            if (isCommandAllowed(command, userRole)) {
+            if (!isCommandAllowed(command, userRole)) {
                 httpServletResponse.sendRedirect(INDEX_PAGE_PATH);
                 return;
             }
@@ -86,7 +86,6 @@ public class SecurityFilter implements Filter {
 
     @Override
     public void destroy() {
-        Filter.super.destroy();
     }
 
     private boolean isCommandValid(String commandValue) {

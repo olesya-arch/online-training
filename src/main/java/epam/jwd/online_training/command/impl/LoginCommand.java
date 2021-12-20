@@ -21,6 +21,7 @@ public class LoginCommand extends Command {
 
     private static final Logger LOG = LogManager.getLogger(LoginCommand.class);
     private static final String LOGIN_COMMAND_EXCEPTION = "Exception occurred during login command! ";
+
     private static final String AUTHORIZATION_ATTRIBUTE = "authorization";
     private static final String FAIL_ATTRIBUTE = "actionFail";
     private static final String MESSAGE_LOGIN_ERROR = "message.login.error";

@@ -16,7 +16,7 @@ public class CommandMap {
         commandMap.put(LOGOUT, new LogoutCommand());
         commandMap.put(SIGNUP, new StudentSignUpCommand());
         commandMap.put(LOCALE, new LocaleCommand());
-        commandMap.put(CETPAGE, new GetPageCommand());
+        commandMap.put(GETPAGE, new GetPageCommand());
         commandMap.put(RECOVERPASSWORD, new RecoverPasswordCommand());
 
         commandMap.put(ADDCOURSE, new AddCourseCommand());

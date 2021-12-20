@@ -10,7 +10,7 @@ public enum CommandType {
     ADDTASK,
     DELETEUSER,
     EDITCOURSE,
-    CETPAGE,
+    GETPAGE,
     GETTAKENCOURSES,
     JOINCOURSE,
     RECOVERPASSWORD,

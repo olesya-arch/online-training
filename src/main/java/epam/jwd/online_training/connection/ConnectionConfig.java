@@ -12,7 +12,7 @@ public class ConnectionConfig {
     private static final String COULD_NOT_READ_DATA_FROM_RESOURCE_BUNDLE_FILE =
             "Couldn't read data from resourceBundle file!!!";
 
-    private static final String RESOURCE_BUNDLE_PATH = "database.properties";
+    private static final String RESOURCE_BUNDLE_PATH = "database";
     private static final String DB_URL = "db.url";
     private static final String DB_USER = "db.user";
     private static final String DB_PASSWORD = "db.password";

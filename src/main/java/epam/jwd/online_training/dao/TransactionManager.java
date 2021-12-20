@@ -17,17 +17,18 @@ public class TransactionManager implements AutoCloseable {
     private static final String SET_AUTO_COMMIT_TRUE_PROBLEM = "Problem occurred trying to set auto commit true! ";
     private static final String TRANSACTION_COMMIT_PROBLEM = "Transaction commit false! ";
     private static final String ROLLBACK_TRANSACTION_PROBLEM = "Problem occurred trying to rollback the transaction! ";
+
     private static TransactionManager instance;
-    private static AtomicBoolean isInitialized = new AtomicBoolean(false);
-    private static ReentrantLock lock = new ReentrantLock();
-    private static ConnectionPool connectionPool = ConnectionPool.getInstance();
-    private static ThreadLocal<ProxyConnection> connectionThreadLocal = new ThreadLocal<>();
+    private static final AtomicBoolean isInitialized = new AtomicBoolean(false);
+    private static final ReentrantLock lock = new ReentrantLock();
+    private static final ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private static final ThreadLocal<ProxyConnection> connectionThreadLocal = new ThreadLocal<ProxyConnection>();
 
     public static TransactionManager launchTransaction(AbstractDao ...abstractDaos) throws SQLException {
         return launchTransaction(Isolation.REPEATABLE_READ, abstractDaos);
     }
 
-    private static TransactionManager launchTransaction(Isolation isolationLevel, AbstractDao ...abstractDaos)
+    public static TransactionManager launchTransaction(Isolation isolationLevel, AbstractDao ...abstractDaos)
             throws SQLException {
         TransactionManager instance = instantiate();
         initialize(abstractDaos);
