@@ -22,7 +22,7 @@ public class ResultSetParser {
     private static final String FAIL_CREATING_COURSE_DTO = "Fail creating course DTO while parsing. ";
 
     static User createUser(ResultSet resultSet) throws DaoException {
-        User user = null;
+        User user;
         try {
             Integer id = resultSet.getInt(EntityAttribute.USER_ID);
             String email = resultSet.getString(EntityAttribute.USER_EMAIL);

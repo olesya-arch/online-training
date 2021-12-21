@@ -81,7 +81,6 @@ public class SecurityFilter implements Filter {
             }
         }
         filterChain.doFilter(servletRequest, servletResponse);
-
     }
 
     @Override

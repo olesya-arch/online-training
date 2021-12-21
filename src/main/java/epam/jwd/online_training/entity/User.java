@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class User implements BaseEntity {
 
-    private static final long serialVersionUID = -5091016521601475181L;
+    private static final long serialVersionUID = 8921669293185159841L;
     private Integer id;
     private String email;
     private String password;
     private String firstName;
     private String lastName;
     private UserRole role;
-    private UserStatus status;
+    private boolean statusIsDeleted;
 
     public User() {
     }
@@ -74,9 +74,9 @@ public class User implements BaseEntity {
         this.lastName = lastName;
     }
 
-    public UserStatus getStatus() { return status; }
+    public boolean getStatus() { return statusIsDeleted; }
 
-    public void setStatus(UserStatus status) { this.status = status; }
+    public void setStatus(boolean statusIsDeleted) { this.statusIsDeleted = statusIsDeleted; }
 
     @Override
     public boolean equals(Object o) {
@@ -89,12 +89,12 @@ public class User implements BaseEntity {
                 && Objects.equals(firstName, user.firstName)
                 && Objects.equals(lastName, user.lastName)
                 && role == user.role
-                && status == user.status;
+                && statusIsDeleted == user.statusIsDeleted;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, firstName, lastName, role, status);
+        return Objects.hash(id, email, password, firstName, lastName, role, statusIsDeleted);
     }
 
     @Override
@@ -106,7 +106,7 @@ public class User implements BaseEntity {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", role=" + role +
-                ", status=" + status +
+                ", statusIsDeleted=" + statusIsDeleted +
                 '}';
     }
 }

@@ -68,6 +68,6 @@
     </div>
     <div class="col-md-4"></div>
 </div>
-<jsp:include page="../../jsp/admin/parts/footer.jsp"/>
+<jsp:include page="../../jsp/teacher/parts/footer.jsp"/>
 </body>
 </html>

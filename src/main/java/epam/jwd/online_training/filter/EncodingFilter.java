@@ -17,10 +17,8 @@ public class EncodingFilter implements Filter {
         servletRequest.setCharacterEncoding(ENCODING_TYPE);
         servletResponse.setCharacterEncoding(ENCODING_TYPE);
         filterChain.doFilter(servletRequest, servletResponse);
-
     }
 
-    @Override
     public void destroy() {
     }
 }

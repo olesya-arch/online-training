@@ -34,7 +34,7 @@ public class LoginCommand extends Command {
 
     @Override
     public ActionResult execute(RequestContent content) throws CommandException {
-        User user = null;
+        User user;
         try {
             UserService userService = (UserService) getService();
             String emailInput = content.getSingleRequestParameter(SighUpAttribute.EMAIL_PARAMETER);
@@ -44,7 +44,7 @@ public class LoginCommand extends Command {
             LOG.error(LOGIN_COMMAND_EXCEPTION, e);
             throw new CommandException(LOGIN_COMMAND_EXCEPTION, e);
         }
-        ActionResult actionResult = null;
+        ActionResult actionResult;
         Map<String, Object> requestAttributes = content.getRequestAttributes();
         if (user != null) {
             requestAttributes.put(AUTHORIZATION_ATTRIBUTE, Boolean.TRUE);
