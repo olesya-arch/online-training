@@ -19,6 +19,7 @@ public class ResultSetParser {
     private static final String CANNOT_CREATE_REVIEW = "Cannot create a review. ";
     private static final String CANNOT_CREATE_TASK = "Cannot create a task. ";
     private static final String CANNOT_CREATE_COURSE = "Cannot create a course. ";
+    private static final String CANNOT_CREATE_COURSE_TYPE = "Cannot create a course type. ";
     private static final String FAIL_CREATING_COURSE_DTO = "Fail creating course DTO while parsing. ";
 
     static User createUser(ResultSet resultSet) throws DaoException {
@@ -54,10 +55,11 @@ public class ResultSetParser {
         try {
             Integer studentId = resultSet.getInt(EntityAttribute.TASK_REVIEW_STUDENT_ID);
             Integer taskId = resultSet.getInt(EntityAttribute.TASK_REVIEW_TASK_ID);
+            String answer = resultSet.getString(EntityAttribute.TASK_REVIEW_ANSWER);
             String comment = resultSet.getString(EntityAttribute.TASK_REVIEW_COMMENT);
             int mark = resultSet.getInt(EntityAttribute.TASK_REVIEW_MARK);
 
-            taskReview = new TaskReview(studentId, taskId, comment, mark);
+            taskReview = new TaskReview(studentId, taskId, answer, comment, mark);
 
         } catch (SQLException e) {
             LOG.error(CANNOT_CREATE_REVIEW, e);
@@ -92,18 +94,16 @@ public class ResultSetParser {
         Course course = null;
         try {
             Integer id = resultSet.getInt(EntityAttribute.COURSE_ID);
-            String typeLine = resultSet.getString(EntityAttribute.COURSE_TYPE);
-            String typeValue = typeLine.toUpperCase();
-            CourseType courseType = CourseType.valueOf(typeValue);
+            String title = resultSet.getString(EntityAttribute.COURSE_TITLE);
+            String description = resultSet.getString(EntityAttribute.COURSE_DESCRIPTION);
+            int typeId = resultSet.getInt(EntityAttribute.COURSE_TYPE);
             int teacherId = resultSet.getInt(EntityAttribute.COURSE_TEACHER_ID);
             String statusLine = resultSet.getString(EntityAttribute.COURSE_STATUS);
             String statusValue = statusLine.toUpperCase();
             CourseStatus courseStatus = CourseStatus.valueOf(statusValue);
             Boolean isAvailable = resultSet.getBoolean(EntityAttribute.COURSE_IS_AVAILABLE);
-            String title = resultSet.getString(EntityAttribute.COURSE_TITLE);
-            String description = resultSet.getString(EntityAttribute.COURSE_DESCRIPTION);
 
-            course = new Course(id, courseType, teacherId, courseStatus, isAvailable, title, description);
+            course = new Course(id, title, description, typeId, teacherId, courseStatus, isAvailable);
 
         } catch (SQLException e) {
             LOG.error(CANNOT_CREATE_COURSE, e);
@@ -114,8 +114,12 @@ public class ResultSetParser {
 
     static CourseDto createCourseDto(ResultSet resultSet) throws DaoException {
         Course course = createCourse(resultSet);
+        CourseType typeId = null;
         User teacher = null;
         try {
+            if (resultSet.getInt(EntityAttribute.COURSE_TYPE) != 0) {
+                typeId = createCourseType(resultSet);
+            }
             if (resultSet.getInt(EntityAttribute.USER_ID) != 0) {
                 teacher = createUser(resultSet);
             }
@@ -123,6 +127,21 @@ public class ResultSetParser {
             LOG.error(FAIL_CREATING_COURSE_DTO, e);
             throw new DaoException(FAIL_CREATING_COURSE_DTO, e);
         }
-        return new CourseDto(course, teacher);
+        return new CourseDto(course, typeId, teacher);
+    }
+
+    static CourseType createCourseType(ResultSet resultSet) throws DaoException {
+        CourseType courseType = null;
+        try {
+            int id = resultSet.getInt(EntityAttribute.COURSE_TYPE_ID);
+            String typeLine = resultSet.getString(EntityAttribute.COURSE_TYPE_CATEGORY);
+            String typeValue = typeLine.toUpperCase();
+            Language language = Language.valueOf(typeValue);
+            courseType = new CourseType(id, language);
+        } catch (SQLException e) {
+            LOG.error(CANNOT_CREATE_COURSE_TYPE, e);
+            throw new DaoException(CANNOT_CREATE_COURSE_TYPE, e);
+        }
+        return courseType;
     }
 }

@@ -11,8 +11,8 @@ public interface CourseService extends Service {
     List<CourseDto> getTakenCourses (int userId) throws ServiceException ;
     List<CourseDto> getAllCourses() throws ServiceException ;
     List<CourseDto> getRelatedCourses(int teacherId) throws ServiceException;
-    boolean updateCourse(int courseId, int type, int teacherId, int status, int isAvailable,
-                         String title, String description) throws ServiceException;
-    boolean addCourse(int type, int teacherId, int status, int isAvailable,
-                      String title, String description) throws ServiceException;
-}
+    boolean updateCourse(int courseId, String title, String description, int type, int teacherId,
+                         String status, int isAvailable) throws ServiceException;
+    boolean addCourse(String title, String description, int type, int teacherId, String status, int isAvailable)
+            throws ServiceException;
+    }

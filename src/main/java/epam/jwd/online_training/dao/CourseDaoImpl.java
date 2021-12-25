@@ -25,68 +25,106 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
     private static final String FAIL_INSERTING_NEW_COURSE = "Fail inserting new course in DAO. ";
 
     private static final String FIND_RELATED_COURSES =
-            "select c.id_course, ct.category, c.teacher_id, cs.course_status, c.is_available, c.c_title, c.c_description, " +
-                    "u_a.id_account, u_a.e_mail, u_a.u_password, u_a.first_name, u_a.last_name, " +
-                    "u_a.account_role, u_s.u_status " +
-                    "from course as c " +
-                    "inner join course_type ct on c.course_type = ct.id_type " +
-                    "inner join user_account u_a on c.teacher_id = u_a.id_account " +
-                    "inner join course_status cs on c.course_status = cs.id_c_status " +
-                    "inner join user_status u_s on status_id = id_status " +
-                    "where c.teacher_id=?";
+            "select c.id_course, " +
+                    "c.c_title, " +
+                    "c.c_description, " +
+                    "c.course_type, " +
+                    "c.teacher_id, " +
+                    "c.course_status, " +
+                    "c.is_available, " +
+                    "u_a.id_account, " +
+                    "u_a.e_mail, " +
+                    "u_a.u_password, " +
+                    "u_a.first_name, " +
+                    "u_a.last_name, " +
+                    "u_a.account_role, " +
+                    "u_a.status_is_deleted " +
+                    "from course c " +
+                    "left join course_type c_t on c.course_type = c_t.id_type " +
+                    "left join user_account u_a on c.teacher_id = u_a.id_account " +
+                    "where u_a.teacher_id=?";
 
     private static final String FIND_TAKEN_COURSES_AND_RELATED_DATA =
-            "select c.id_course, ct.category, c.teacher_id, cs.course_status, c.is_available, c.c_title, c.c_description, " +
-                    "u_a.id_account, u_a.e_mail, u_a.u_password, u_a.first_name, u_a.last_name, " +
-                    "u_a.account_role, u_s.u_status, c_e.course_id, c_e.student_id " +
-                    "from online_training_db.course as c " +
-                    "inner join course_type ct on c.course_type = ct.id_type " +
-                    "inner join user_account u_a on c.teacher_id = u_a.id_account " +
-                    "inner join course_status cs on c.course_status = cs.id_c_status " +
-                    "inner join user_status u_s on status_id = id_status " +
-                    "inner join course_enrolment c_e on c.id_course = c_e.course_id " +
+            "select c.id_course, " +
+                    "c.c_title, " +
+                    "c.c_description, " +
+                    "c.course_type, " +
+                    "c.teacher_id, " +
+                    "c.course_status, " +
+                    "c.is_available, " +
+                    "u_a.id_account, " +
+                    "u_a.e_mail, " +
+                    "u_a.u_password, " +
+                    "u_a.first_name, " +
+                    "u_a.last_name, " +
+                    "u_a.account_role, " +
+                    "u_a.status_is_deleted, " +
+                    "c_e.course_id, c_e.student_id " +
+                    "from online_training_db.course c " +
+                    "left join course_type ct on c.course_type = ct.id_type " +
+                    "left join user_account u_a on c.teacher_id = u_a.id_account " +
+                    "left join course_enrolment c_e on c.id_course = c_e.course_id " +
                     "where c_e.student_id=?";
 
     private static final String FIND_AVAILABLE_COURSES_AND_RELATED_DATA =
-            "select c.id_course, ct.category, c.teacher_id, cs.course_status, c.is_available, c.c_title, c.c_description, " +
-                    "u_a.id_account, u_a.e_mail, u_a.u_password, u_a.first_name, u_a.last_name, " +
-                    "u_a.account_role, u_s.u_status " +
-                    "from online_training_db.course as c " +
-                    "inner join course_type ct on c.course_type = ct.id_type " +
-                    "inner join user_account u_a on c.teacher_id = u_a.id_account " +
-                    "inner join course_status cs on c.course_status = cs.id_c_status " +
-                    "inner join user_status u_s on status_id = id_status " +
-                    "where is_available = 1 and c.id_course not in " +
-                    "(select course_id from course_enrolment where student_id=?)";
+            "select c.id_course, " +
+                    "c.c_title, " +
+                    "c.c_description, " +
+                    "c.course_type, " +
+                    "c.teacher_id, " +
+                    "c.course_status, " +
+                    "c.is_available,  " +
+                    "u_a.id_account, " +
+                    "u_a.e_mail, " +
+                    "u_a.u_password, " +
+                    "u_a.first_name, " +
+                    "u_a.last_name, " +
+                    "u_a.account_role, " +
+                    "u_a.status_is_deleted, " +
+                    "from online_training_db.course c " +
+                    "left join course_type ct on c.course_type = ct.id_type " +
+                    "left join user_account u_a on c.teacher_id = u_a.id_account " +
+                    "where c.is_available = 1 and c.id_course NOT IN " +
+                    "(select course_id from course_enrolment AS taken_courses where student_id=?)";
 
     private static final String FIND_ALL_COURSES_AND_RELATED_DATA =
-            "select c.id_course, ct.category, c.teacher_id, cs.course_status, c.is_available, c.c_title, c.c_description, " +
-                    "u_a.id_account, u_a.e_mail, u_a.u_password, u_a.first_name, u_a.last_name, " +
-                    "u_a.account_role, u_s.u_status " +
-                    "from online_training_db.course as c " +
-                    "inner join course_type ct on c.course_type = ct.id_type " +
-                    "inner join user_account u_a on c.teacher_id = u_a.id_account " +
-                    "inner join course_status cs on c.course_status = cs.id_c_status " +
-                    "inner join user_status u_s on status_id = id_status";
+            "select c.id_course, " +
+                    "c.c_title, " +
+                    "c.c_description, " +
+                    "c.course_type, " +
+                    "c.teacher_id, " +
+                    "c.course_status, " +
+                    "c.is_available,  " +
+                    "u_a.id_account, " +
+                    "u_a.e_mail, " +
+                    "u_a.u_password, " +
+                    "u_a.first_name, " +
+                    "u_a.last_name, " +
+                    "u_a.account_role, " +
+                    "u_a.status_is_deleted " +
+                    "from online_training_db.course c " +
+                    "left join course_type ct on c.course_type = ct.id_type " +
+                    "left join user_account u_a on c.teacher_id = u_a.id_account ";
+
 
     private static final String UPDATE_COURSE_BY_ID =
             "update course " +
-                    "set course_type=?, " +
+                    "set c_title=?, " +
+                    "c_description=?, " +
+                    "course_type=?, " +
                     "teacher_id=?, " +
                     "course_status=?, " +
                     "is_available=?, " +
-                    "c_title=?, " +
-                    "c_description=? " +
                     "where id_course=?";
 
     private static final String INSERT_NEW_COURSE =
             "insert into course "+
-                    "(course_type, " +
+                    "(c_title, " +
+                    "c_description, " +
+                    "course_type, " +
                     "teacher_id, " +
                     "course_status, " +
-                    "is_available, " +
-                    "c_title, " +
-                    "c_description) " +
+                    "is_available) " +
                     "values (?,?,?,?,?,?)";
 
     @Override
@@ -161,25 +199,21 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
     }
 
     @Override
-    public boolean updateCourseById(int courseId, int type, int teacherId, int status, int isAvailable,
-                                    String title, String description) throws DaoException {
+    public boolean updateCourseById(int courseId, String title, String description, int type,
+                                    int teacherId, String status, int isAvailable) throws DaoException {
 
         ProxyConnection proxyConnection = connectionThreadLocal.get();
         try(PreparedStatement statement = proxyConnection.prepareStatement(UPDATE_COURSE_BY_ID)) {
-            if (type == 0) {
-                statement.setNull(1, Types.NULL);
-            } else {
-                statement.setInt(1, type);
-            }
+            statement.setString(1, title);
+            statement.setString(2, description);
+            statement.setInt(3, type);
             if (teacherId == 0) {
-                statement.setNull(2, Types.NULL);
+                statement.setNull(4, Types.NULL);
             } else {
-                statement.setInt(2, teacherId);
+                statement.setInt(4, teacherId);
             }
-            statement.setInt(3, status);
-            statement.setInt(4, isAvailable);
-            statement.setString(5, title);
-            statement.setString(6, description);
+            statement.setString(5, status);
+            statement.setInt(6, isAvailable);
             statement.setInt(7, courseId);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -190,24 +224,19 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
     }
 
     @Override
-    public boolean addCourse(int type, int teacherId, int status, int isAvailable, String title, String description)
-            throws DaoException {
+    public boolean addCourse(String title, String description, int type, int teacherId, String status, int isAvailable) throws DaoException {
         ProxyConnection proxyConnection = connectionThreadLocal.get();
         try(PreparedStatement statement = proxyConnection.prepareStatement(INSERT_NEW_COURSE)) {
-            if (type == 0) {
-                statement.setNull(1, Types.NULL);
-            } else {
-            statement.setInt(1, type);
-            }
+            statement.setString(1, title);
+            statement.setString(2, description);
+            statement.setInt(3, type);
             if (teacherId == 0) {
-                statement.setNull(2, Types.NULL);
+                statement.setNull(4, Types.NULL);
             } else {
-            statement.setInt(2, teacherId);
+            statement.setInt(4, teacherId);
             }
-            statement.setInt(3, status);
-            statement.setInt(4, isAvailable);
-            statement.setString(5, title);
-            statement.setString(6, description);
+            statement.setString(5, status);
+            statement.setInt(6, isAvailable);
             statement.executeUpdate();
         } catch (SQLException e) {
             LOG.error(FAIL_INSERTING_NEW_COURSE, e);

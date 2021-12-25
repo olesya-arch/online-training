@@ -8,12 +8,13 @@ import epam.jwd.online_training.exception.DaoException;
 import epam.jwd.online_training.exception.ServiceException;
 import epam.jwd.online_training.util.MailSender;
 import epam.jwd.online_training.util.PasswordCreator;
-import epam.jwd.online_training.util.PasswordEncoder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import static epam.jwd.online_training.util.PasswordEncoder.encodePassword;
 
 public class UserServiceImpl implements UserService {
 
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(String emailInput, String passwordInput) throws ServiceException {
         User user = null;
-        String encodePassword = PasswordEncoder.encodePassword(passwordInput);
+        String encodePassword = encodePassword(passwordInput);
         try(TransactionManager tm = TransactionManager.launchQuery(userDao)) {
             if (userDao.checkUserByEmail(emailInput)) {
                 user = userDao.findUserByEmailAndPassword(emailInput, encodePassword);
@@ -58,7 +59,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean signUp(String email, String password, String firstName, String lastName, String role) throws ServiceException {
         boolean isRegistered = false;
-        String encodePassword = PasswordEncoder.encodePassword(password);
+        String encodePassword = encodePassword(password);
         try(TransactionManager tm = TransactionManager.launchTransaction(userDao)) {
             isRegistered = userDao.addUserAccount(email, encodePassword, firstName, lastName, role);
         } catch (SQLException | DaoException e) {
@@ -111,7 +112,7 @@ public class UserServiceImpl implements UserService {
         try(TransactionManager tm = TransactionManager.launchTransaction(userDao)) {
             boolean isUserExist = userDao.checkUserByEmail(email);
             if (isUserExist) {
-                String encodePassword = PasswordEncoder.encodePassword(password);
+                String encodePassword = encodePassword(password);
                 userDao.updateUserPassword(email, encodePassword);
                 MailSender mailSender = new MailSender();
                 String message = text + password;

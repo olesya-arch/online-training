@@ -11,8 +11,8 @@ public interface CourseDao {
     List<CourseDto> findTakenCourses (int userId) throws DaoException ;
     List<CourseDto> findAllCourses() throws DaoException ;
     List<CourseDto> findRelatedCourses(int teacherId) throws DaoException;
-    boolean updateCourseById(int courseId, int type, int teacherId, int status, int isAvailable,
-                             String title, String description) throws DaoException;
-    boolean addCourse(int type, int teacherId, int status, int isAvailable, String title, String description)
+    boolean updateCourseById(int courseId, String title, String description, int type, int teacherId,
+                             String status, int isAvailable) throws DaoException;
+    boolean addCourse(String title, String description, int type, int teacherId, String status, int isAvailable)
             throws DaoException;
 }

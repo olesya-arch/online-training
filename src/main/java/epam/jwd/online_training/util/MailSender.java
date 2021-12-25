@@ -12,9 +12,9 @@ public class MailSender {
 
     private static final Logger LOG = LogManager.getLogger(MailSender.class);
     private static final String SEND_EMAIL_EXCEPTION = "Exception occurred sending email! ";
-    private String login;
-    private String password;
-    private Properties properties;
+    private final String login;
+    private final String password;
+    private final Properties properties;
 
     public MailSender() {
         this.login = MailSenderConfig.email;

@@ -12,7 +12,7 @@ public final class EntityAttribute {
     public static final String USER_ROLE = "account_role";
 
     public static final String COURSE_ID = "id_course";
-    public static final String COURSE_TYPE = "category";
+    public static final String COURSE_TYPE = "course_type";
     public static final String COURSE_TEACHER_ID = "teacher_id";
     public static final String COURSE_STATUS = "course_status";
     public static final String COURSE_IS_AVAILABLE = "is_available";
@@ -26,8 +26,12 @@ public final class EntityAttribute {
 
     public static final String TASK_REVIEW_STUDENT_ID = "student_id";
     public static final String TASK_REVIEW_TASK_ID = "task_id";
+    public static final String TASK_REVIEW_ANSWER = "task_answer";
     public static final String TASK_REVIEW_COMMENT = "teacher_comment";
     public static final String TASK_REVIEW_MARK = "mark";
+
+    public static final String COURSE_TYPE_ID = "id_type";
+    public static final String COURSE_TYPE_CATEGORY = "category";
 
     public EntityAttribute(){
     }

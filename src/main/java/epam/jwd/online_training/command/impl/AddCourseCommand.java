@@ -53,19 +53,18 @@ public class AddCourseCommand extends Command {
     private boolean processCourseAdding(RequestContent content) throws CommandException {
         boolean isAdded;
         try {
+            String title = content.getSingleRequestParameter(EntityAttribute.COURSE_TITLE);
+            String description = content.getSingleRequestParameter(EntityAttribute.COURSE_DESCRIPTION);
             String typeLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TYPE);
             int type = Integer.parseInt(typeLine);
             String teacherIdLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TEACHER_ID);
             int teacherId = Integer.parseInt(teacherIdLine);
-            String statusLine = content.getSingleRequestParameter(EntityAttribute.COURSE_STATUS);
-            int status = Integer.parseInt(statusLine);
+            String status = content.getSingleRequestParameter(EntityAttribute.COURSE_STATUS);
             String isAvailableLine = content.getSingleRequestParameter(EntityAttribute.COURSE_IS_AVAILABLE);
             int isAvailable = Integer.parseInt(isAvailableLine);
-            String title = content.getSingleRequestParameter(EntityAttribute.COURSE_TITLE);
-            String description = content.getSingleRequestParameter(EntityAttribute.COURSE_DESCRIPTION);
 
             CourseService courseService = (CourseService) getService();
-            isAdded = courseService.addCourse(type, teacherId, status, isAvailable, title, description);
+            isAdded = courseService.addCourse(title, description, type, teacherId, status, isAvailable);
         } catch (ServiceException e) {
             LOG.error(ADD_COURSE_COMMAND_EXCEPTION, e);
             throw new CommandException(ADD_COURSE_COMMAND_EXCEPTION, e);

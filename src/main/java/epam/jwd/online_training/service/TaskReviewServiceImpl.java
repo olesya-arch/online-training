@@ -16,10 +16,24 @@ import java.util.List;
 public class TaskReviewServiceImpl implements TaskReviewService {
 
     private static final Logger LOG = LogManager.getLogger(TaskReviewServiceImpl.class);
-    private static TaskReviewDaoImpl taskReviewDao = DAOManager.getTaskReviewDao();
+    private static final TaskReviewDaoImpl taskReviewDao = DAOManager.getTaskReviewDao();
 
+    private static final String SEND_TASK_ANSWER_EXCEPTION = "Exception in process of sending answer in service. ";
     private static final String SEND_TASK_REVIEW_EXCEPTION = "Exception in process of sending review in service. ";
     private static final String RECEIVE_ALL_TASK_REVIEWS_EXCEPTION = "Exception in process of receiving all reviews by task id. ";
+
+    @Override
+    public boolean sendAnswer(int userId, int taskId, String answer) throws ServiceException {
+        boolean result = false;
+        try(TransactionManager tm = TransactionManager.launchTransaction(taskReviewDao)) {
+            answer = ScriptSecurityChecker.checkScript(answer);
+            result = taskReviewDao.sendAnswer(userId, taskId, answer);
+        } catch (SQLException | DaoException e) {
+            LOG.error(SEND_TASK_ANSWER_EXCEPTION, e);
+            throw new ServiceException(SEND_TASK_ANSWER_EXCEPTION, e);
+        }
+        return result;
+    }
 
     @Override
     public boolean sendReview(int userId, int taskId, String comment, int mark) throws ServiceException {

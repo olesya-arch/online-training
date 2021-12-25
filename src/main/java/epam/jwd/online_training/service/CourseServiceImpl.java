@@ -15,7 +15,7 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
 
     private static final Logger LOG = LogManager.getLogger(CourseServiceImpl.class);
-    private static CourseDaoImpl courseDao = DAOManager.getCourseDao();
+    private static final CourseDaoImpl courseDao = DAOManager.getCourseDao();
 
     private static final String SHOW_AVAILABLE_COURSES_EXCEPTION = "Exception occurred showing available courses in service. ";
     private static final String SHOW_TAKEN_COURSES_EXCEPTION = "Exception occurred showing taken courses in service. ";
@@ -74,10 +74,10 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public boolean updateCourse(int courseId, int type, int teacherId, int status, int isAvailable,
-                                String title, String description) throws ServiceException {
+    public boolean updateCourse(int courseId, String title, String description, int type,
+                                int teacherId, String status, int isAvailable) throws ServiceException {
         try(TransactionManager tm = TransactionManager.launchTransaction(courseDao)) {
-            courseDao.updateCourseById(courseId, type, teacherId, status, isAvailable, title, description);
+            courseDao.updateCourseById(courseId, title, description, type, teacherId, status, isAvailable);
         } catch (SQLException | DaoException e) {
             LOG.error(UPDATE_COURSE_EXCEPTION, e);
             throw new ServiceException(UPDATE_COURSE_EXCEPTION, e);
@@ -86,10 +86,10 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public boolean addCourse(int type, int teacherId, int status, int isAvailable, String title, String description)
+    public boolean addCourse(String title, String description, int type, int teacherId, String status, int isAvailable)
             throws ServiceException {
         try(TransactionManager tm = TransactionManager.launchTransaction(courseDao)) {
-            courseDao.addCourse(type, teacherId, status, isAvailable, title, description);
+            courseDao.addCourse(title, description, type, teacherId, status, isAvailable);
         } catch (SQLException | DaoException e) {
             LOG.error(ADD_COURSE_EXCEPTION, e);
             throw new ServiceException(ADD_COURSE_EXCEPTION, e);

@@ -4,27 +4,27 @@ import java.util.Objects;
 
 public class Course implements BaseEntity {
 
-    private static final long serialVersionUID = -3456188089825198902L;
+    private static final long serialVersionUID = 4081717350851850823L;
     private Integer id;
-    private CourseType typeId;
-    private int teacherId;
-    private CourseStatus status;
-    private Boolean isAvailable;
     private String title;
     private String description;
+    private int typeId;
+    private int teacherId;
+    private CourseStatus status;
+    private boolean isAvailable;
 
     public Course() {
     }
 
-    public Course(Integer id, CourseType typeId, int teacherId, CourseStatus status, Boolean isAvailable,
-                  String title, String description) {
+    public Course(Integer id, String title, String description, int typeId,
+                  int teacherId, CourseStatus status, Boolean isAvailable) {
         this.id = id;
+        this.title = title;
+        this.description = description;
         this.typeId = typeId;
         this.teacherId = teacherId;
         this.status = status;
         this.isAvailable = isAvailable;
-        this.title = title;
-        this.description = description;
     }
 
     @Override
@@ -36,11 +36,11 @@ public class Course implements BaseEntity {
         this.id = id;
     }
 
-    public CourseType getTypeId() {
+    public int getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(CourseType typeId) {
+    public void setTypeId(int typeId) {
         this.typeId = typeId;
     }
 
@@ -83,30 +83,30 @@ public class Course implements BaseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return Objects.equals(id, course.id)
-                && typeId == course.typeId
-                && teacherId == course.teacherId
-                && status == course.status
-                && Objects.equals(isAvailable, course.isAvailable)
+        return teacherId == course.teacherId
+                && isAvailable == course.isAvailable
+                && Objects.equals(id, course.id)
                 && Objects.equals(title, course.title)
-                && Objects.equals(description, course.description);
+                && Objects.equals(description, course.description)
+                && typeId == course.typeId
+                && status == course.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, typeId, teacherId, status, isAvailable, title, description);
+        return Objects.hash(id, title, description, typeId, teacherId, status, isAvailable);
     }
 
     @Override
     public String toString() {
         return "Course{" +
                 "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
                 ", typeId=" + typeId +
                 ", teacherId=" + teacherId +
                 ", status=" + status +
                 ", isAvailable=" + isAvailable +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
                 '}';
     }
 }

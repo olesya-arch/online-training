@@ -1,34 +1,31 @@
 package epam.jwd.online_training.dto;
 
-import epam.jwd.online_training.entity.Course;
-import epam.jwd.online_training.entity.CourseStatus;
-import epam.jwd.online_training.entity.CourseType;
-import epam.jwd.online_training.entity.User;
+import epam.jwd.online_training.entity.*;
 
 import java.io.Serializable;
 
 public class CourseDto implements Serializable {
 
-    private static final long serialVersionUID = 2729250273490344917L;
+    private static final long serialVersionUID = 6406284031210356867L;
     private Integer id;
-    private CourseType typeId;
-    private CourseStatus status;
-    private Boolean isAvailable;
     private String title;
     private String description;
+    private CourseType typeId;
     private User teacher;
+    private CourseStatus status;
+    private Boolean isAvailable;
 
     public CourseDto() {
     }
 
-    public CourseDto(Course course, User teacher) {
+    public CourseDto(Course course, CourseType courseType, User teacher) {
         this.id = course.getId();
-        this.typeId = course.getTypeId();
-        this.status = course.getStatus();
-        this.isAvailable = course.getAvailable();
         this.title = course.getTitle();;
         this.description = course.getDescription();
+        this.typeId = courseType;
         this.teacher = teacher;
+        this.status = course.getStatus();
+        this.isAvailable = course.getAvailable();
     }
 
     public Integer getId() {

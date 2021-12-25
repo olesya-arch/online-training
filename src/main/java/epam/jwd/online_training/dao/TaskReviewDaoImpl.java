@@ -15,22 +15,56 @@ import java.util.List;
 public class TaskReviewDaoImpl extends AbstractDao implements TaskReviewDao {
 
     private static final Logger LOG = LogManager.getLogger(TaskReviewDaoImpl.class);
+    private static final String FAIL_SENDING_TASK_ANSWER = "Fail sending an answer in DAO. ";
     private static final String FAIL_SENDING_TASK_REVIEW = "Fail sending review in DAO. ";
     private static final String FAIL_FINDING_TASK_REVIEWS_BY_TASK_ID = "Fail finding reviews and users by task id in DAO. ";
 
+    private static final String UPDATE_ANSWER =
+            "update task_review " +
+                    "set task_answer=?, " +
+                    "where student_id=? " +
+                    "and task_id=?";
+
     private static final String SEND_TASK_REVIEW =
-            "update task_review set mark=?, " +
+            "update task_review " +
+                    "set mark=?, " +
                     "teacher_comment=? " +
                     "where student_id=? " +
                     "and task_id=?";
 
     private static final String FIND_TASK_REVIEWS_AND_STUDENTS_BY_TASK_ID =
-            "select tr.student_id, tr.task_id, tr.teacher_comment, tr.mark, " +
-                    "id_account, e_mail, u_password, first_name, last_name, account_role, us.u_status " +
+            "select tr.student_id, " +
+                    "tr.task_id, " +
+                    "tr.teacher_comment, " +
+                    "tr.mark, " +
+                    "ua.id_account, " +
+                    "ua.e_mail, " +
+                    "ua.u_password, " +
+                    "ua.first_name, " +
+                    "ua.last_name, " +
+                    "ua.account_role, " +
+                    "ua.status_is_deleted " +
                     "from task_review as tr " +
                     "inner join user_account as ua on tr.student_id = id_account " +
-                    "inner join user_status as us on status_id = us.id_status " +
                     "where tr.task_id=?";
+
+    @Override
+    public boolean sendAnswer(int userId, int taskId, String answer) throws DaoException {
+        boolean result = false;
+        ProxyConnection proxyConnection = connectionThreadLocal.get();
+        try(PreparedStatement statement = proxyConnection.prepareStatement(UPDATE_ANSWER)) {
+            statement.setString(1, answer);
+            statement.setInt(2, userId);
+            statement.setInt(3, taskId);
+            if(statement.executeUpdate() != 0) {
+                result = true;
+            }
+        } catch (SQLException e) {
+            LOG.error(FAIL_SENDING_TASK_ANSWER, e);
+            throw new DaoException(FAIL_SENDING_TASK_ANSWER, e);
+        }
+        return result;
+    }
 
     @Override
     public boolean sendReview(int userId, int taskId, String comment, int mark) throws DaoException {

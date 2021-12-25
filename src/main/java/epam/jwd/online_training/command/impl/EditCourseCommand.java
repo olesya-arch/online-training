@@ -43,19 +43,18 @@ public class EditCourseCommand extends Command {
             try {
                 String idLine = content.getSingleRequestParameter(EntityAttribute.COURSE_ID);
                 int courseId = Integer.parseInt(idLine);
+                String title = content.getSingleRequestParameter(EntityAttribute.COURSE_TITLE);
+                String description = content.getSingleRequestParameter(EntityAttribute.COURSE_DESCRIPTION);
                 String typeLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TYPE);
                 int type = Integer.parseInt(typeLine);
                 String teacherIdLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TEACHER_ID);
                 int teacherId = Integer.parseInt(teacherIdLine);
-                String statusLine = content.getSingleRequestParameter(EntityAttribute.COURSE_STATUS);
-                int status = Integer.parseInt(statusLine);
+                String status = content.getSingleRequestParameter(EntityAttribute.COURSE_STATUS);
                 String isAvailableLine = content.getSingleRequestParameter(EntityAttribute.COURSE_IS_AVAILABLE);
                 int isAvailable = Integer.parseInt(isAvailableLine);
-                String title = content.getSingleRequestParameter(EntityAttribute.COURSE_TITLE);
-                String description = content.getSingleRequestParameter(EntityAttribute.COURSE_DESCRIPTION);
 
                 CourseService courseService = (CourseService) getService();
-                isUpdated = courseService.updateCourse(courseId, type, teacherId, status, isAvailable, title, description);
+                isUpdated = courseService.updateCourse(courseId, title, description, type, teacherId, status, isAvailable);
             } catch (ServiceException e) {
                 LOG.error(UPDATE_COURSE_COMMAND_EXCEPTION, e);
                 throw new CommandException(UPDATE_COURSE_COMMAND_EXCEPTION, e);
