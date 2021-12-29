@@ -49,7 +49,22 @@
                                 </c:otherwise>
                             </c:choose>
                         </td>
-                        <td>${task.review.review}</td>
+                        <td>${tasks.review.review}</td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${tasks.review.mark eq 0}">
+                                    <form method="POST" action="/controller">
+                                        <input type="hidden"  name="command" value="getpage" />
+                                        <input type="hidden"  name="expectedPage" value="sendanswer" />
+                                        <input type="hidden"  name="task_id" value="${tasks.id}" />
+                                        <button type="submit" class="btn btn-success"><fmt:message key="label.receivedtasks.send-answer" bundle="${rb}"/></button>
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <fmt:message key="label.receivedtasks.tasksended" bundle="${rb}"/>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
 
                     </tr>
                 </c:forEach>

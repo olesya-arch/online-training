@@ -37,6 +37,16 @@
                         <td>${reviews.lastName} ${reviews.firstName}</td>
                         <td>
                             <c:choose>
+                                <c:when test="${not empty reviews.answer}">
+                                    <fmt:message key="label.taskreviews.answer-sended" bundle="${rb}"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <fmt:message key="label.taskreviews.answer-empty" bundle="${rb}"/>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td>
+                            <c:choose>
                                 <c:when test="${reviews.mark eq 0}">
                                     <fmt:message key="label.receivedtasks.tasknotreviewed" bundle="${rb}"/>
                                 </c:when>

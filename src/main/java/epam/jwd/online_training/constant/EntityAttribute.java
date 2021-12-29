@@ -3,6 +3,7 @@ package epam.jwd.online_training.constant;
 public final class EntityAttribute {
 
     public static final String ALL_TEACHERS_PARAM = "allTeachers";
+    public static final String ALL_COURSE_TYPE_PARAM = "allTypes";
 
     public static final String USER_ID = "id_account";
     public static final String USER_EMAIL = "e_mail";

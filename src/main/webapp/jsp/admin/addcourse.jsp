@@ -23,6 +23,27 @@
             <input type="hidden" name="addCourse" value="go"/>
 
             <div class="control-group">
+                <!-- Title -->
+                <label class="control-label" for="c_title"><fmt:message
+                        key="label.editcourse.course-title" bundle="${rb}"/><span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" class="form-control" id="c_title" name="c_title"
+                           required="" pattern="[А-Яа-я\w\s.,?!-+#%_()]{5,75}"/>
+                    <p class="help-block"><fmt:message key="label.editcourse.course-title-help" bundle="${rb}"/></p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Description -->
+                <label class="control-label" for="c_description"><fmt:message
+                        key="label.editcourse.course-description" bundle="${rb}"/><span class="required">*</span></label>
+                <div class="controls">
+                    <input type="text" class="form-control" id="c_description" name="c_description"
+                           required="" pattern="[А-Яа-я\w\s.,?!-+#%_()]{5,275}"/>
+                    <p class="help-block"><fmt:message key="label.editcourse.course-description-help" bundle="${rb}"/></p>
+                </div>
+            </div>
+            <div class="control-group">
                 <!-- Course type -->
                 <label class="control-label" for="ct.category"><fmt:message key="label.editcourse.course-type"
                                                                             bundle="${rb}"/><span
@@ -77,28 +98,6 @@
                         <option value="1"><fmt:message key="label.addcourse.course-available" bundle="${rb}"/></option>
                         <option value="0"><fmt:message key="label.addcourse.course-unavailable" bundle="${rb}"/></option>
                     </select>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <!-- Title -->
-                <label class="control-label" for="c_title"><fmt:message
-                        key="label.editcourse.course-title" bundle="${rb}"/><span class="required">*</span></label>
-                <div class="controls">
-                    <input type="text" class="form-control" id="c_title" name="c_title"
-                           required="" pattern="[А-Яа-я\w\s.,?!-+#%_()]{5,75}"/>
-                    <p class="help-block"><fmt:message key="label.editcourse.course-title-help" bundle="${rb}"/></p>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <!-- Description -->
-                <label class="control-label" for="c_description"><fmt:message
-                        key="label.editcourse.course-description" bundle="${rb}"/><span class="required">*</span></label>
-                <div class="controls">
-                    <input type="text" class="form-control" id="c_description" name="c_description"
-                           required="" pattern="[А-Яа-я\w\s.,?!-+#%_()]{5,275}"/>
-                    <p class="help-block"><fmt:message key="label.editcourse.course-description-help" bundle="${rb}"/></p>
                 </div>
             </div>
 

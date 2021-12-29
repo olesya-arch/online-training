@@ -32,6 +32,14 @@
             </c:if>
         </c:forEach>
     </dd>
+    <dt><fmt:message key="label.reviewtask.answer" bundle="${rb}"/></dt>
+    <dd>
+        <c:forEach items="${sessionScope.reviewsAndUsers}" var="reviews">
+            <c:if test="${reviews.userId eq param.user_id and reviews.taskId eq param.task_id}">
+                ${reviews.answer}
+            </c:if>
+        </c:forEach>
+    </dd>
 </dl>
     <hr>
 </div>

@@ -6,13 +6,11 @@ import epam.jwd.online_training.constant.EntityAttribute;
 import epam.jwd.online_training.content.ActionResult;
 import epam.jwd.online_training.content.NavigationType;
 import epam.jwd.online_training.content.RequestContent;
+import epam.jwd.online_training.entity.CourseType;
 import epam.jwd.online_training.entity.User;
 import epam.jwd.online_training.exception.CommandException;
 import epam.jwd.online_training.exception.ServiceException;
-import epam.jwd.online_training.service.CourseService;
-import epam.jwd.online_training.service.ServiceManager;
-import epam.jwd.online_training.service.UserService;
-import epam.jwd.online_training.service.UserServiceImpl;
+import epam.jwd.online_training.service.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -69,6 +67,10 @@ public class EditCourseCommand extends Command {
     private ActionResult putRequiredDataIntoSession(RequestContent content) throws CommandException {
         ActionResult actionResult;
         try {
+            CourseTypeService courseTypeService = ServiceManager.getCourseTypeService();
+            List<CourseType> courseTypeList = courseTypeService.getAllLanguages();
+            content.setSessionAttributes(EntityAttribute.ALL_COURSE_TYPE_PARAM, courseTypeList);
+
             UserService userReceiver = new UserServiceImpl();
             List<User> teacherList = userReceiver.getAllTeachers();
             content.setSessionAttributes(EntityAttribute.ALL_TEACHERS_PARAM, teacherList);
