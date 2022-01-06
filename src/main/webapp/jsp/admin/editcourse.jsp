@@ -61,16 +61,14 @@
 
             <div class="control-group">
             <!-- Course type -->
-            <label class="control-label" for="category"><fmt:message key="label.editcourse.course-type"
+            <label class="control-label" for="id_type"><fmt:message key="label.editcourse.course-type"
                                                                             bundle="${rb}"/><span
               class="required">*</span></label>
               <div class="controls">
-                  <select name="category" id="category" required class="form-control">
-                      <option value="ENGLISH"><fmt:message key="label.addcourse.course-type-english" bundle="${rb}"/></option>
-                      <option value="GERMAN"><fmt:message key="label.addcourse.course-type-german" bundle="${rb}"/></option>
-                      <option value="CHINESE"><fmt:message key="label.addcourse.course-type-chinese" bundle="${rb}"/></option>
-                      <option value="FRENCH"><fmt:message key="label.addcourse.course-type-french" bundle="${rb}"/></option>
-                      <option value="LATVIAN"><fmt:message key="label.addcourse.course-type-latvian" bundle="${rb}"/></option>
+                  <select name="id_type" id="id_type" required class="form-control">
+                      <c:forEach items="${sessionScope.allTypes}" var="types">
+                          <option value="${types.id}">${types.language} </option>
+                      </c:forEach>
                   </select>
               </div>
             </div>

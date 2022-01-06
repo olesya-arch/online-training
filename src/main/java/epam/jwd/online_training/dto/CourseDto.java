@@ -6,11 +6,11 @@ import java.io.Serializable;
 
 public class CourseDto implements Serializable {
 
-    private static final long serialVersionUID = 6406284031210356867L;
+    private static final long serialVersionUID = -1953049158139187750L;
     private Integer id;
     private String title;
     private String description;
-    private CourseType typeId;
+    private CourseType courseType;
     private User teacher;
     private CourseStatus status;
     private Boolean isAvailable;
@@ -22,7 +22,7 @@ public class CourseDto implements Serializable {
         this.id = course.getId();
         this.title = course.getTitle();;
         this.description = course.getDescription();
-        this.typeId = courseType;
+        this.courseType = courseType;
         this.teacher = teacher;
         this.status = course.getStatus();
         this.isAvailable = course.getAvailable();
@@ -36,13 +36,9 @@ public class CourseDto implements Serializable {
         this.id = id;
     }
 
-    public CourseType getTypeId() {
-        return typeId;
-    }
+    public CourseType getCourseType() { return courseType;}
 
-    public void setTypeId(CourseType typeId) {
-        this.typeId = typeId;
-    }
+    public void setCourseType(CourseType courseType) { this.courseType = courseType; }
 
     public CourseStatus getStatus() {
         return status;

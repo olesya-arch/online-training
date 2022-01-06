@@ -114,11 +114,11 @@ public class ResultSetParser {
 
     static CourseDto createCourseDto(ResultSet resultSet) throws DaoException {
         Course course = createCourse(resultSet);
-        CourseType typeId = null;
+        CourseType courseType = null;
         User teacher = null;
         try {
             if (resultSet.getInt(EntityAttribute.COURSE_TYPE) != 0) {
-                typeId = createCourseType(resultSet);
+                courseType = createCourseType(resultSet);
             }
             if (resultSet.getInt(EntityAttribute.USER_ID) != 0) {
                 teacher = createUser(resultSet);
@@ -127,7 +127,7 @@ public class ResultSetParser {
             LOG.error(FAIL_CREATING_COURSE_DTO, e);
             throw new DaoException(FAIL_CREATING_COURSE_DTO, e);
         }
-        return new CourseDto(course, typeId, teacher);
+        return new CourseDto(course, courseType, teacher);
     }
 
     static CourseType createCourseType(ResultSet resultSet) throws DaoException {

@@ -39,9 +39,9 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.last_name, " +
                     "u_a.account_role, " +
                     "u_a.status_is_deleted " +
-                    "from course c " +
-                    "left join course_type c_t on c.course_type = c_t.id_type " +
-                    "left join user_account u_a on c.teacher_id = u_a.id_account " +
+                    "from course as c " +
+                    "inner join course_type as c_t on c.course_type = c_t.id_type " +
+                    "inner join user_account as u_a on c.teacher_id = u_a.id_account " +
                     "where u_a.teacher_id=?";
 
     private static final String FIND_TAKEN_COURSES_AND_RELATED_DATA =
@@ -60,10 +60,10 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.account_role, " +
                     "u_a.status_is_deleted, " +
                     "c_e.course_id, c_e.student_id " +
-                    "from online_training_db.course c " +
-                    "left join course_type ct on c.course_type = ct.id_type " +
-                    "left join user_account u_a on c.teacher_id = u_a.id_account " +
-                    "left join course_enrolment c_e on c.id_course = c_e.course_id " +
+                    "from online_training_db.course as c " +
+                    "inner join course_type as ct on c.course_type = ct.id_type " +
+                    "inner join user_account as u_a on c.teacher_id = u_a.id_account " +
+                    "inner join course_enrolment as c_e on c.id_course = c_e.course_id " +
                     "where c_e.student_id=?";
 
     private static final String FIND_AVAILABLE_COURSES_AND_RELATED_DATA =
@@ -81,9 +81,9 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.last_name, " +
                     "u_a.account_role, " +
                     "u_a.status_is_deleted, " +
-                    "from online_training_db.course c " +
-                    "left join course_type ct on c.course_type = ct.id_type " +
-                    "left join user_account u_a on c.teacher_id = u_a.id_account " +
+                    "from online_training_db.course as c " +
+                    "inner join course_type as ct on c.course_type = ct.id_type " +
+                    "inner join user_account as u_a on c.teacher_id = u_a.id_account " +
                     "where c.is_available = 1 and c.id_course NOT IN " +
                     "(select course_id from course_enrolment AS taken_courses where student_id=?)";
 
@@ -102,9 +102,9 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.last_name, " +
                     "u_a.account_role, " +
                     "u_a.status_is_deleted " +
-                    "from online_training_db.course c " +
-                    "left join course_type ct on c.course_type = ct.id_type " +
-                    "left join user_account u_a on c.teacher_id = u_a.id_account ";
+                    "from online_training_db.course as c " +
+                    "inner join course_type as ct on c.course_type = ct.id_type " +
+                    "inner join user_account as u_a on c.teacher_id = u_a.id_account ";
 
 
     private static final String UPDATE_COURSE_BY_ID =
