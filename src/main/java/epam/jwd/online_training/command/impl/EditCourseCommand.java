@@ -44,7 +44,7 @@ public class EditCourseCommand extends Command {
                 String title = content.getSingleRequestParameter(EntityAttribute.COURSE_TITLE);
                 String description = content.getSingleRequestParameter(EntityAttribute.COURSE_DESCRIPTION);
                 String typeLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TYPE);
-                int type = Integer.parseInt(typeLine);
+                int typeId = Integer.parseInt(typeLine);
                 String teacherIdLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TEACHER_ID);
                 int teacherId = Integer.parseInt(teacherIdLine);
                 String status = content.getSingleRequestParameter(EntityAttribute.COURSE_STATUS);
@@ -52,7 +52,7 @@ public class EditCourseCommand extends Command {
                 int isAvailable = Integer.parseInt(isAvailableLine);
 
                 CourseService courseService = (CourseService) getService();
-                isUpdated = courseService.updateCourse(courseId, title, description, type, teacherId, status, isAvailable);
+                isUpdated = courseService.updateCourse(courseId, title, description, typeId, teacherId, status, isAvailable);
             } catch (ServiceException e) {
                 LOG.error(UPDATE_COURSE_COMMAND_EXCEPTION, e);
                 throw new CommandException(UPDATE_COURSE_COMMAND_EXCEPTION, e);

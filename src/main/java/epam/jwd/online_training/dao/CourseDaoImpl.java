@@ -25,24 +25,24 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
     private static final String FAIL_INSERTING_NEW_COURSE = "Fail inserting new course in DAO. ";
 
     private static final String FIND_RELATED_COURSES =
-            "select c.id_course, " +
+            "select id_course, " +
                     "c.c_title, " +
                     "c.c_description, " +
                     "c.course_type, " +
                     "c.teacher_id, " +
                     "c.course_status, " +
                     "c.is_available, " +
-                    "u_a.id_account, " +
-                    "u_a.e_mail, " +
-                    "u_a.u_password, " +
-                    "u_a.first_name, " +
-                    "u_a.last_name, " +
-                    "u_a.account_role, " +
-                    "u_a.status_is_deleted " +
+                    "c.id_account, " +
+                    "c.e_mail, " +
+                    "c.u_password, " +
+                    "c.first_name, " +
+                    "c.last_name, " +
+                    "c.account_role, " +
+                    "c.status_is_deleted " +
                     "from course as c " +
-                    "inner join course_type as c_t on c.course_type = c_t.id_type " +
-                    "inner join user_account as u_a on c.teacher_id = u_a.id_account " +
-                    "where u_a.teacher_id=?";
+                    "left join course_type as c_t on c.course_type = c_t.id_type " +
+                    "left join user_account as u_a on c.teacher_id = u_a.id_account " +
+                    "where teacher_id=?";
 
     private static final String FIND_TAKEN_COURSES_AND_RELATED_DATA =
             "select c.id_course, " +
@@ -60,10 +60,10 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.account_role, " +
                     "u_a.status_is_deleted, " +
                     "c_e.course_id, c_e.student_id " +
-                    "from online_training_db.course as c " +
-                    "inner join course_type as ct on c.course_type = ct.id_type " +
-                    "inner join user_account as u_a on c.teacher_id = u_a.id_account " +
-                    "inner join course_enrolment as c_e on c.id_course = c_e.course_id " +
+                    "from course as c " +
+                    "left join course_type as c_t on c.course_type = c_t.id_type " +
+                    "left join user_account as u_a on c.teacher_id = u_a.id_account " +
+                    "left join course_enrolment as c_e on c.id_course = c_e.course_id " +
                     "where c_e.student_id=?";
 
     private static final String FIND_AVAILABLE_COURSES_AND_RELATED_DATA =
@@ -81,9 +81,9 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.last_name, " +
                     "u_a.account_role, " +
                     "u_a.status_is_deleted, " +
-                    "from online_training_db.course as c " +
-                    "inner join course_type as ct on c.course_type = ct.id_type " +
-                    "inner join user_account as u_a on c.teacher_id = u_a.id_account " +
+                    "from course as c " +
+                    "left join course_type as c_t on c.course_type = c_t.id_type " +
+                    "left join user_account as u_a on c.teacher_id = u_a.id_account " +
                     "where c.is_available = 1 and c.id_course NOT IN " +
                     "(select course_id from course_enrolment AS taken_courses where student_id=?)";
 
@@ -102,9 +102,9 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.last_name, " +
                     "u_a.account_role, " +
                     "u_a.status_is_deleted " +
-                    "from online_training_db.course as c " +
-                    "inner join course_type as ct on c.course_type = ct.id_type " +
-                    "inner join user_account as u_a on c.teacher_id = u_a.id_account ";
+                    "from course as c " +
+                    "left join course_type as c_t on c.course_type = c_t.id_type " +
+                    "left join user_account as u_a on c.teacher_id = u_a.id_account ";
 
 
     private static final String UPDATE_COURSE_BY_ID =
@@ -199,14 +199,14 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
     }
 
     @Override
-    public boolean updateCourseById(int courseId, String title, String description, int type,
+    public boolean updateCourseById(int courseId, String title, String description, int typeId,
                                     int teacherId, String status, int isAvailable) throws DaoException {
 
         ProxyConnection proxyConnection = connectionThreadLocal.get();
         try(PreparedStatement statement = proxyConnection.prepareStatement(UPDATE_COURSE_BY_ID)) {
             statement.setString(1, title);
             statement.setString(2, description);
-            statement.setInt(3, type);
+            statement.setInt(3, typeId);
             if (teacherId == 0) {
                 statement.setNull(4, Types.NULL);
             } else {
@@ -224,16 +224,16 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
     }
 
     @Override
-    public boolean addCourse(String title, String description, int type, int teacherId, String status, int isAvailable) throws DaoException {
+    public boolean addCourse(String title, String description, int typeId, int teacherId, String status, int isAvailable) throws DaoException {
         ProxyConnection proxyConnection = connectionThreadLocal.get();
         try(PreparedStatement statement = proxyConnection.prepareStatement(INSERT_NEW_COURSE)) {
             statement.setString(1, title);
             statement.setString(2, description);
-            statement.setInt(3, type);
+            statement.setInt(3, typeId);
             if (teacherId == 0) {
                 statement.setNull(4, Types.NULL);
             } else {
-            statement.setInt(4, teacherId);
+                statement.setInt(4, teacherId);
             }
             statement.setString(5, status);
             statement.setInt(6, isAvailable);
@@ -245,3 +245,4 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
         return true;
     }
 }
+

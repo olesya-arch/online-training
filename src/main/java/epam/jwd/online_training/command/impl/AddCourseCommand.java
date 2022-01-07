@@ -6,10 +6,12 @@ import epam.jwd.online_training.constant.EntityAttribute;
 import epam.jwd.online_training.content.ActionResult;
 import epam.jwd.online_training.content.NavigationType;
 import epam.jwd.online_training.content.RequestContent;
+import epam.jwd.online_training.entity.CourseType;
 import epam.jwd.online_training.entity.User;
 import epam.jwd.online_training.exception.CommandException;
 import epam.jwd.online_training.exception.ServiceException;
 import epam.jwd.online_training.service.CourseService;
+import epam.jwd.online_training.service.CourseTypeService;
 import epam.jwd.online_training.service.ServiceManager;
 import epam.jwd.online_training.service.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -56,7 +58,7 @@ public class AddCourseCommand extends Command {
             String title = content.getSingleRequestParameter(EntityAttribute.COURSE_TITLE);
             String description = content.getSingleRequestParameter(EntityAttribute.COURSE_DESCRIPTION);
             String typeLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TYPE);
-            int type = Integer.parseInt(typeLine);
+            int typeId = Integer.parseInt(typeLine);
             String teacherIdLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TEACHER_ID);
             int teacherId = Integer.parseInt(teacherIdLine);
             String status = content.getSingleRequestParameter(EntityAttribute.COURSE_STATUS);
@@ -64,7 +66,7 @@ public class AddCourseCommand extends Command {
             int isAvailable = Integer.parseInt(isAvailableLine);
 
             CourseService courseService = (CourseService) getService();
-            isAdded = courseService.addCourse(title, description, type, teacherId, status, isAvailable);
+            isAdded = courseService.addCourse(title, description, typeId, teacherId, status, isAvailable);
         } catch (ServiceException e) {
             LOG.error(ADD_COURSE_COMMAND_EXCEPTION, e);
             throw new CommandException(ADD_COURSE_COMMAND_EXCEPTION, e);
@@ -75,6 +77,10 @@ public class AddCourseCommand extends Command {
     private ActionResult putRequiredDataIntoSession(RequestContent content) throws CommandException {
         ActionResult actionResult;
         try {
+            CourseTypeService courseTypeService = ServiceManager.getCourseTypeService();
+            List<CourseType> courseTypeList = courseTypeService.getAllLanguages();
+            content.setSessionAttributes(EntityAttribute.ALL_COURSE_TYPE_PARAM, courseTypeList);
+
             UserService userService = ServiceManager.getUserService();
             List<User> teachersList = userService.getAllTeachers();
             content.setSessionAttributes(EntityAttribute.ALL_TEACHERS_PARAM, teachersList);

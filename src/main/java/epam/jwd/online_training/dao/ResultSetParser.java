@@ -133,7 +133,7 @@ public class ResultSetParser {
     static CourseType createCourseType(ResultSet resultSet) throws DaoException {
         CourseType courseType = null;
         try {
-            int id = resultSet.getInt(EntityAttribute.COURSE_TYPE_ID);
+            Integer id = resultSet.getInt(EntityAttribute.COURSE_TYPE_ID);
             String typeLine = resultSet.getString(EntityAttribute.COURSE_TYPE_CATEGORY);
             String typeValue = typeLine.toUpperCase();
             Language language = Language.valueOf(typeValue);
