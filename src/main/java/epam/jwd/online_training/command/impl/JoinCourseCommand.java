@@ -19,8 +19,8 @@ public class JoinCourseCommand extends Command {
 
     private static final Logger LOG = LogManager.getLogger(JoinCourseCommand.class);
     private static final String FAIL_EXECUTING_JOIN_COURSE_COMMAND = "Failed executing join course command. ";
-    private static final String COURSE_ID_PARAMETER = "course_id";
-    private static final String TAKEN_COURSES_PATH = "/controller?command=takencourses";
+    private static final String COURSE_ID_PARAMETER = "id_course";
+    private static final String TAKEN_COURSES_PATH = "/controller?command=gettakencourses";
     private static final String JOIN_SUCCESS_MESSAGE = "message.student.course-join-success";
     private static final String JOIN_FAIL_MESSAGE = "message.student.course-join-fail";
 

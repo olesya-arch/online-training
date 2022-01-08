@@ -32,7 +32,7 @@
                 <tbody>
                 <c:forEach items="${requestScope.takenCourses}" var="courses">
                     <tr>
-                        <td>${courses.type}</td>
+                        <td>${courses.courseType}</td>
                         <td>${courses.status}</td>
                         <td>${courses.title}</td>
                         <td>${courses.description}</td>

@@ -8,40 +8,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><fmt:message key="label.student.title" bundle="${rb}"/></title>
+    <title>Send answer</title>
 </head>
 <body>
 <jsp:include page="../../jsp/student/parts/header.jsp"/>
+<H1 align="center"><fmt:message key="label.sendanswer.title" bundle="${rb}"/></H1>
 
-<H1 align="center"><fmt:message key="label.student.joined-courses" bundle="${rb}"/></H1>
+<div class="container" role="main">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form method="post" action="/controller">
+            <input type="hidden" name="command" value="sendAnswer">
+            <input type="hidden" name="task_id" value="${param.task_id}">
 
-<div class="container theme-showcase" role="main">
-    <div class="row">
-        <div class="col-md-12">
-            <br/>
-            <table class="table table-striped table-bordered table-condensed">
-                <thead>
-                <tr>
-                    <th><fmt:message key="label.availablecourses.title" bundle="${rb}"/></th>
-                    <th><fmt:message key="label.availablecourses.type-language" bundle="${rb}"/></th>
-                    <th><fmt:message key="label.availablecourses.status" bundle="${rb}"/></th>
-                    <th><fmt:message key="label.allcourses.teacher-fullname" bundle="${rb}"/></th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${requestScope.takenCourses}" var="courses">
-                    <tr>
-                        <td>${courses.title}</td>
-                        <td>${courses.type.language}</td>
-                        <td>${courses.status}</td>
-                        <td>${courses.teacher.lastName} ${courses.teacher.firstName}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
+            <div class="control-group">
+                <!-- Answer -->
+                <label class="control-label" for="answer"><fmt:message
+                        key="label.sendanswer.answer" bundle="${rb}"/><span class="required">*</span></label>
+                <div class="controls">
+                    <textarea type="text" rows="10" class="form-control" id="answer" name="answer"
+                              required="" pattern="[А-Яа-я\w\s.,?!-+#%_()]{1,4500}"></textarea>
+                    <p class="help-block"><fmt:message key="label.sendanswer.helper" bundle="${rb}"/></p>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success"><fmt:message key="label.sendanswer.send" bundle="${rb}"/></button>
+        </form>
     </div>
-</div>
-<jsp:include page="../../jsp/student/parts/footer.jsp"/>
+    <div class="col-md-3"></div>
+    <jsp:include page="../../jsp/student/parts/footer.jsp"/>
 </body>
 </html>

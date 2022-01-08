@@ -21,7 +21,7 @@ public class TaskReviewDaoImpl extends AbstractDao implements TaskReviewDao {
 
     private static final String UPDATE_ANSWER =
             "update task_review " +
-                    "set task_answer=?, " +
+                    "set task_answer=? " +
                     "where student_id=? " +
                     "and task_id=?";
 
@@ -35,6 +35,7 @@ public class TaskReviewDaoImpl extends AbstractDao implements TaskReviewDao {
     private static final String FIND_TASK_REVIEWS_AND_STUDENTS_BY_TASK_ID =
             "select tr.student_id, " +
                     "tr.task_id, " +
+                    "tr.task_answer, " +
                     "tr.teacher_comment, " +
                     "tr.mark, " +
                     "ua.id_account, " +
@@ -45,7 +46,7 @@ public class TaskReviewDaoImpl extends AbstractDao implements TaskReviewDao {
                     "ua.account_role, " +
                     "ua.status_is_deleted " +
                     "from task_review as tr " +
-                    "inner join user_account as ua on tr.student_id = id_account " +
+                    "inner join user_account as ua on tr.student_id = ua.id_account " +
                     "where tr.task_id=?";
 
     @Override

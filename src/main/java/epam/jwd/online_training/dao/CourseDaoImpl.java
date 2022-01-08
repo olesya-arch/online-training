@@ -25,20 +25,22 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
     private static final String FAIL_INSERTING_NEW_COURSE = "Fail inserting new course in DAO. ";
 
     private static final String FIND_RELATED_COURSES =
-            "select id_course, " +
+            "select c.id_course, " +
                     "c.c_title, " +
                     "c.c_description, " +
                     "c.course_type, " +
                     "c.teacher_id, " +
                     "c.course_status, " +
                     "c.is_available, " +
-                    "c.id_account, " +
-                    "c.e_mail, " +
-                    "c.u_password, " +
-                    "c.first_name, " +
-                    "c.last_name, " +
-                    "c.account_role, " +
-                    "c.status_is_deleted " +
+                    "c_t.id_type, " +
+                    "c_t.category, " +
+                    "u_a.id_account, " +
+                    "u_a.e_mail, " +
+                    "u_a.u_password, " +
+                    "u_a.first_name, " +
+                    "u_a.last_name, " +
+                    "u_a.account_role, " +
+                    "u_a.status_is_deleted " +
                     "from course as c " +
                     "left join course_type as c_t on c.course_type = c_t.id_type " +
                     "left join user_account as u_a on c.teacher_id = u_a.id_account " +
@@ -59,10 +61,12 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.last_name, " +
                     "u_a.account_role, " +
                     "u_a.status_is_deleted, " +
+                    "c_t.id_type, " +
+                    "c_t.category, " +
                     "c_e.course_id, c_e.student_id " +
                     "from course as c " +
-                    "left join course_type as c_t on c.course_type = c_t.id_type " +
                     "left join user_account as u_a on c.teacher_id = u_a.id_account " +
+                    "left join course_type as c_t on c.course_type = c_t.id_type " +
                     "left join course_enrolment as c_e on c.id_course = c_e.course_id " +
                     "where c_e.student_id=?";
 
@@ -81,9 +85,11 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.last_name, " +
                     "u_a.account_role, " +
                     "u_a.status_is_deleted, " +
+                    "c_t.id_type, " +
+                    "c_t.category " +
                     "from course as c " +
-                    "left join course_type as c_t on c.course_type = c_t.id_type " +
                     "left join user_account as u_a on c.teacher_id = u_a.id_account " +
+                    "left join course_type as c_t on c.course_type = c_t.id_type " +
                     "where c.is_available = 1 and c.id_course NOT IN " +
                     "(select course_id from course_enrolment AS taken_courses where student_id=?)";
 
@@ -101,11 +107,12 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.first_name, " +
                     "u_a.last_name, " +
                     "u_a.account_role, " +
-                    "u_a.status_is_deleted " +
+                    "u_a.status_is_deleted, " +
+                    "c_t.id_type, " +
+                    "c_t.category " +
                     "from course as c " +
-                    "left join course_type as c_t on c.course_type = c_t.id_type " +
-                    "left join user_account as u_a on c.teacher_id = u_a.id_account ";
-
+                    "left join user_account as u_a on c.teacher_id = u_a.id_account " +
+                    "left join course_type as c_t on c.course_type = c_t.id_type ";
 
     private static final String UPDATE_COURSE_BY_ID =
             "update course " +
@@ -114,7 +121,7 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "course_type=?, " +
                     "teacher_id=?, " +
                     "course_status=?, " +
-                    "is_available=?, " +
+                    "is_available=? " +
                     "where id_course=?";
 
     private static final String INSERT_NEW_COURSE =

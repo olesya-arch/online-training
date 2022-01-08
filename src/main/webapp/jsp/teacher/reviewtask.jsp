@@ -27,7 +27,7 @@
     </dd>
     <dd>
         <c:forEach items="${sessionScope.reviewsAndUsers}" var="reviews">
-            <c:if test="${reviews.studentId eq param.student_id and reviews.taskId eq param.task_id}">
+            <c:if test="${reviews.taskId eq param.task_id}">
                 ${reviews.answer}
             </c:if>
         </c:forEach>
@@ -35,7 +35,7 @@
     <dt><fmt:message key="label.reviewtask.answer" bundle="${rb}"/></dt>
     <dd>
         <c:forEach items="${sessionScope.reviewsAndUsers}" var="reviews">
-            <c:if test="${reviews.userId eq param.user_id and reviews.taskId eq param.task_id}">
+            <c:if test="${reviews.studentId eq param.student_id and reviews.taskId eq param.task_id}">
                 ${reviews.answer}
             </c:if>
         </c:forEach>
@@ -61,7 +61,7 @@
                 <label for="mark"><fmt:message
                         key="label.reviewtask.mark" bundle="${rb}"/></label>
                 <div class="controls">
-                    <select name="task_mark" id="mark" required class="form-control">
+                    <select name="mark" id="mark" required class="form-control">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

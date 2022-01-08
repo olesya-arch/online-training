@@ -41,7 +41,7 @@
                         <td>${task.description}</td>
                         <td>
                             <c:choose>
-                                <c:when test="${task.taskreview.mark eq 0}">
+                                <c:when test="${task.review.mark eq 0}">
                                     <fmt:message key="label.receivedtasks.tasknotreviewed" bundle="${rb}"/>
                                 </c:when>
                                 <c:otherwise>
@@ -49,10 +49,10 @@
                                 </c:otherwise>
                             </c:choose>
                         </td>
-                        <td>${tasks.review.review}</td>
+                        <td>${task.review.review}</td>
                         <td>
                             <c:choose>
-                                <c:when test="${tasks.review.mark eq 0}">
+                                <c:when test="${task.review.mark eq 0}">
                                     <form method="POST" action="/controller">
                                         <input type="hidden"  name="command" value="getpage" />
                                         <input type="hidden"  name="expectedPage" value="sendanswer" />

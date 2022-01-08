@@ -7,10 +7,11 @@ import java.io.Serializable;
 
 public class TaskReviewDto implements Serializable {
 
-    private static final long serialVersionUID = 4060783043391670430L;
+    private static final long serialVersionUID = 7959755222921006819L;
     private Integer studentId;
     private Integer taskId;
-    private String teacherComment;
+    private String answer;
+    private String review;
     private int mark;
     private String firstName;
     private String lastName;
@@ -18,11 +19,12 @@ public class TaskReviewDto implements Serializable {
     public TaskReviewDto() {
     }
 
-    public TaskReviewDto(TaskReview taskReview, User user) {
-        this.studentId = taskReview.getId();
-        this.taskId = taskReview.getTaskId();
-        this.teacherComment = taskReview.getTeacherComment();
-        this.mark = taskReview.getMark();
+    public TaskReviewDto(TaskReview review, User user) {
+        this.studentId = review.getId();
+        this.taskId = review.getTaskId();
+        this.answer = review.getTaskAnswer();
+        this.review= review.getTeacherComment();
+        this.mark = review.getMark();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
     }
@@ -43,12 +45,16 @@ public class TaskReviewDto implements Serializable {
         this.taskId = taskId;
     }
 
-    public String getTeacherComment() {
-        return teacherComment;
+    public String getAnswer() { return answer; }
+
+    public void setAnswer(String taskAnswer) { this.answer = taskAnswer; }
+
+    public String getReview() {
+        return review;
     }
 
-    public void setTeacherComment(String teacherComment) {
-        this.teacherComment = teacherComment;
+    public void setReview(String teacherComment) {
+        this.review = teacherComment;
     }
 
     public int getMark() {

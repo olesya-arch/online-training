@@ -38,9 +38,7 @@ public class TaskReview implements BaseEntity {
         this.taskId = taskId;
     }
 
-    public String getTeacherComment() {
-        return teacherComment;
-    }
+    public String getTeacherComment() { return teacherComment; }
 
     public void setTeacherComment(String teacherComment) {
         this.teacherComment = teacherComment;

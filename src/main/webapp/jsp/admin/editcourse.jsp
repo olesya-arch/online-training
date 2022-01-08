@@ -38,7 +38,7 @@
                             <td>${courses.id}</td>
                             <td>${courses.title}</td>
                             <td>${courses.description}</td>
-                            <td>${courses.type}</td>
+                            <td>${courses.courseType}</td>
                             <td>${courses.status}</td>
                             <td>${courses.teacher.id}</td>
                             <td>${courses.teacher.lastName} ${courses.teacher.firstName}</td>

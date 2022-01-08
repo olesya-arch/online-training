@@ -7,22 +7,22 @@ import java.io.Serializable;
 
 public class TaskDto implements Serializable {
 
-    private static final long serialVersionUID = 4117575010954027202L;
+    private static final long serialVersionUID = 7048436975230701193L;
     private Integer id;
     private String title;
     private String description;
     private int courseId;
-    TaskReview taskReview;
+    private TaskReview review;
 
     public TaskDto() {
     }
 
-    public TaskDto(Task task, TaskReview taskReview) {
+    public TaskDto(Task task, TaskReview review) {
         this.id = task.getId();
         this.title = task.getTitle();
         this.description = task.getDescription();
         this.courseId = task.getCourseId();
-        this.taskReview = taskReview;
+        this.review = review;
     }
 
     public Integer getId() {
@@ -57,11 +57,11 @@ public class TaskDto implements Serializable {
         this.courseId = courseId;
     }
 
-    public TaskReview getTaskReview() {
-        return taskReview;
+    public TaskReview getReview() {
+        return review;
     }
 
-    public void setTaskReview(TaskReview taskReview) {
-        this.taskReview = taskReview;
+    public void setReview(TaskReview review) {
+        this.review = review;
     }
 }
