@@ -20,22 +20,16 @@
     <dt><fmt:message key="label.reviewtask.task" bundle="${rb}"/></dt>
     <dd>
         <c:forEach items="${sessionScope.relatedTasks}" var="tasks">
-            <c:if test="${tasks.id eq param.task_id}">
+            <c:if test="${tasks.id eq param.id_task}">
                 ${tasks.description}
             </c:if>
         </c:forEach>
     </dd>
-    <dd>
-        <c:forEach items="${sessionScope.reviewsAndUsers}" var="reviews">
-            <c:if test="${reviews.taskId eq param.task_id}">
-                ${reviews.answer}
-            </c:if>
-        </c:forEach>
-    </dd>
+
     <dt><fmt:message key="label.reviewtask.answer" bundle="${rb}"/></dt>
     <dd>
         <c:forEach items="${sessionScope.reviewsAndUsers}" var="reviews">
-            <c:if test="${reviews.studentId eq param.student_id and reviews.taskId eq param.task_id}">
+            <c:if test="${reviews.studentId eq param.id_account and reviews.taskId eq param.id_task}">
                 ${reviews.answer}
             </c:if>
         </c:forEach>
@@ -53,8 +47,8 @@
 
         <form name="editCourseForm" method="GET" action="/controller">
             <input type="hidden" name="command" value="sendreview"/>
-            <input type="hidden" name="task_id" value="${param.task_id}"/>
-            <input type="hidden" name="student_id" value="${param.student_id}"/>
+            <input type="hidden" name="id_task" value="${param.id_task}"/>
+            <input type="hidden" name="id_account" value="${param.id_account}"/>
 
             <div class="control-group">
                 <!-- Mark -->
@@ -78,9 +72,9 @@
             <div class="control-group">
                 <!-- Review -->
                 <div class="form-group">
-                    <label for="teacher_comment"><fmt:message
+                    <label for="review"><fmt:message
                             key="label.reviewtask.review" bundle="${rb}"/></label>
-                    <textarea class="form-control" id="teacher_comment" name="teacher_comment" rows="10"></textarea>
+                    <textarea class="form-control" id="review" name="review" rows="10"></textarea>
                 </div>
             </div>
 

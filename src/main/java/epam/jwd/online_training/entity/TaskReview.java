@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class TaskReview implements BaseEntity {
 
-    private static final long serialVersionUID = -5658517227580711092L;
+    private static final long serialVersionUID = 8117078918169120756L;
     private Integer studentId;
     private Integer taskId;
-    private String taskAnswer;
-    private String teacherComment;
+    private String answer;
+    private String review;
     private Integer mark;
 
     public TaskReview() {
@@ -17,8 +17,8 @@ public class TaskReview implements BaseEntity {
     public TaskReview(Integer studentId, Integer taskId, String taskAnswer, String teacherComment, Integer mark) {
         this.studentId = studentId;
         this.taskId = taskId;
-        this.taskAnswer = taskAnswer;
-        this.teacherComment = teacherComment;
+        this.answer = taskAnswer;
+        this.review = teacherComment;
         this.mark = mark;
     }
 
@@ -38,10 +38,10 @@ public class TaskReview implements BaseEntity {
         this.taskId = taskId;
     }
 
-    public String getTeacherComment() { return teacherComment; }
+    public String getReview() { return review; }
 
-    public void setTeacherComment(String teacherComment) {
-        this.teacherComment = teacherComment;
+    public void setReview(String teacherComment) {
+        this.review = teacherComment;
     }
 
     public Integer getMark() {
@@ -52,9 +52,9 @@ public class TaskReview implements BaseEntity {
         this.mark = mark;
     }
 
-    public String getTaskAnswer() { return taskAnswer; }
+    public String getAnswer() { return answer; }
 
-    public void setTaskAnswer(String taskAnswer) { this.taskAnswer = taskAnswer; }
+    public void setAnswer(String taskAnswer) { this.answer = taskAnswer; }
 
     @Override
     public boolean equals(Object o) {
@@ -63,14 +63,14 @@ public class TaskReview implements BaseEntity {
         TaskReview that = (TaskReview) o;
         return Objects.equals(studentId, that.studentId) 
                 && Objects.equals(taskId, that.taskId) 
-                && Objects.equals(taskAnswer, that.taskAnswer) 
-                && Objects.equals(teacherComment, that.teacherComment) 
+                && Objects.equals(answer, that.answer) 
+                && Objects.equals(review, that.review) 
                 && Objects.equals(mark, that.mark);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(studentId, taskId, taskAnswer, teacherComment, mark);
+        return Objects.hash(studentId, taskId, answer, review, mark);
     }
 
     @Override
@@ -78,8 +78,8 @@ public class TaskReview implements BaseEntity {
         return "TaskReview{" +
                 "studentId=" + studentId +
                 ", taskId=" + taskId +
-                ", taskAnswer='" + taskAnswer + '\'' +
-                ", teacherComment='" + teacherComment + '\'' +
+                ", taskAnswer='" + answer + '\'' +
+                ", teacherComment='" + review + '\'' +
                 ", mark=" + mark +
                 '}';
     }

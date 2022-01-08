@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public class TaskReviewDto implements Serializable {
 
-    private static final long serialVersionUID = 7959755222921006819L;
+    private static final long serialVersionUID = 5422210569534407101L;
     private Integer studentId;
     private Integer taskId;
     private String answer;
@@ -22,8 +22,8 @@ public class TaskReviewDto implements Serializable {
     public TaskReviewDto(TaskReview review, User user) {
         this.studentId = review.getId();
         this.taskId = review.getTaskId();
-        this.answer = review.getTaskAnswer();
-        this.review= review.getTeacherComment();
+        this.answer = review.getAnswer();
+        this.review= review.getReview();
         this.mark = review.getMark();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();

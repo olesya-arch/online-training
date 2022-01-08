@@ -28,12 +28,13 @@ public class CommandMap {
 
         commandMap.put(TAKETEACHERRELATEDCOURSES, new TakeTeacherRelatedCoursesCommand());
         commandMap.put(TAKECOURSERELATEDTASKS, new TakeCourseRelatedTasksCommand());
-        commandMap.put(TAKEREVIEWBYTASKID, new TakeReviewsByTaskId());
+        commandMap.put(TAKEREVIEWSBYTASKID, new TakeReviewsByTaskId());
         commandMap.put(SENDREVIEW, new SendReviewCommand());
         commandMap.put(ADDTASK, new AddTaskCommand());
 
         commandMap.put(TAKEAVAILABLECOURSES, new TakeAvailableCoursesCommand());
         commandMap.put(TAKERECEIVEDTASKS, new TakeReceivedTasksCommand());
+        commandMap.put(SENDANSWER, new SendAnswerCommand());
         commandMap.put(GETTAKENCOURSES, new GetTakenCoursesCommand());
         commandMap.put(JOINCOURSE, new JoinCourseCommand());
     }

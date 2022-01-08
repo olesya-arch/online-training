@@ -69,7 +69,7 @@
                     <c:forEach items="${sessionScope.relatedTasks}" var="tasks">
                         <tr>
                             <td>${tasks.id}</td>
-                            <td>${tasks.name}</td>
+                            <td>${tasks.title}</td>
                             <td>${tasks.description}</td>
                             <td>
                                 <form method="GET" action="/controller">

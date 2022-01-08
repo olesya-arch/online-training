@@ -35,6 +35,7 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao{
                     "t.t_title, " +
                     "t.description, " +
                     "t.course_id, " +
+                    "tr.student_id, " +
                     "tr.task_id, " +
                     "tr.task_answer, " +
                     "tr.teacher_comment, " +

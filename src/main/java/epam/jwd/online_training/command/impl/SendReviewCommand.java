@@ -19,8 +19,8 @@ public class SendReviewCommand extends Command {
     private static final String SEND_SUCCESS_MESSAGE = "message.teacher.review-sent-success";
     private static final String SEND_FAIL_MESSAGE = "message.teacher.review-sent-fail";
 
-    private static final String TASK_ID_PARAM = "task_id";
-    private static final String USER_ID_PARAM = "student_id";
+    private static final String TASK_ID_PARAM = "id_task";
+    private static final String USER_ID_PARAM = "id_account";
     private static final String TASK_MARK_PARAM = "mark";
     private static final String TASK_REVIEW_PARAM = "teacher_comment";
 

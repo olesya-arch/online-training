@@ -22,7 +22,7 @@ public class SendAnswerCommand extends Command {
     private static final String RECEIVED_TASKS_PAGE = "/controller?command=takereceivedtasks";
     private static final String SEND_SUCCESS_MESSAGE = "message.student.answer-send-success";
     private static final String SEND_FAIL_MESSAGE = "message.student.answer-send-fail";
-    private static final String TASK_ID_PARAM = "task_id";
+    private static final String TASK_ID_PARAM = "taskid";
     private static final String ANSWER_PARAM = "answer";
 
     public SendAnswerCommand() { super(ServiceManager.getTaskReviewService()); }

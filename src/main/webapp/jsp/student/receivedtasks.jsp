@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Available courses</title>
+    <title>Received tasks</title>
 </head>
 <body>
 <jsp:include page="../../jsp/student/parts/header.jsp"/>
