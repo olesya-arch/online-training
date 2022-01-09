@@ -18,8 +18,8 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
         <form method="post" action="/controller">
-            <input type="hidden" name="command" value="sendAnswer">
-            <input type="hidden" name="task_id" value="${param.task_id}">
+            <input type="hidden" name="command" value="sendanswer">
+            <input type="hidden" name="taskid" value="${param.taskid}">
 
             <div class="control-group">
                 <!-- Answer -->

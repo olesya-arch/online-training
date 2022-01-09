@@ -57,7 +57,7 @@
 
             <form name="editCourseForm" method="POST" action="/controller">
                 <input type="hidden" name="command" value="editcourse"/>
-                <input type="hidden" name="id_course" value="${param.course_id}"/>
+                <input type="hidden" name="id_course" value="${param.id_course}"/>
 
             <div class="control-group">
             <!-- Course type -->

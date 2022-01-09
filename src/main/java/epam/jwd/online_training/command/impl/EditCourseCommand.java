@@ -43,7 +43,7 @@ public class EditCourseCommand extends Command {
                 int courseId = Integer.parseInt(idLine);
                 String title = content.getSingleRequestParameter(EntityAttribute.COURSE_TITLE);
                 String description = content.getSingleRequestParameter(EntityAttribute.COURSE_DESCRIPTION);
-                String typeLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TYPE);
+                String typeLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TYPE_ID);
                 int typeId = Integer.parseInt(typeLine);
                 String teacherIdLine = content.getSingleRequestParameter(EntityAttribute.COURSE_TEACHER_ID);
                 int teacherId = Integer.parseInt(teacherIdLine);

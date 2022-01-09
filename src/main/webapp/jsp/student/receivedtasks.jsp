@@ -56,7 +56,7 @@
                                     <form method="POST" action="/controller">
                                         <input type="hidden"  name="command" value="getpage" />
                                         <input type="hidden"  name="expectedPage" value="sendanswer" />
-                                        <input type="hidden"  name="task_id" value="${tasks.id}" />
+                                        <input type="hidden"  name="taskid" value="${task.id}" />
                                         <button type="submit" class="btn btn-success"><fmt:message key="label.receivedtasks.send-answer" bundle="${rb}"/></button>
                                     </form>
                                 </c:when>

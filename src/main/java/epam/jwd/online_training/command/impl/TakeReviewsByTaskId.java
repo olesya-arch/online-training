@@ -30,7 +30,6 @@ public class TakeReviewsByTaskId extends Command {
     public ActionResult execute(RequestContent content) throws CommandException {
         String taskIdLine = content.getSingleRequestParameter(TASK_ID_PARAM);
         int taskId = Integer.parseInt(taskIdLine);
-
         try {
             TaskReviewService taskReviewReceiver = (TaskReviewService) getService();
             List<TaskReviewDto> reviewDtoList = taskReviewReceiver.getAllReviewsByTaskId(taskId);

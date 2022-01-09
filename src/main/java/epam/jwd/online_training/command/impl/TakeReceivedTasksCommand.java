@@ -21,7 +21,7 @@ import java.util.Map;
 public class TakeReceivedTasksCommand extends Command {
 
     private static final Logger LOG = LogManager.getLogger(TakeReceivedTasksCommand.class);
-    private static final String RECEIVED_TASKS_PATH = PagePathManager.getProperty("path.page.received-tasks");
+    private static final String RECEIVED_TASKS_PATH = PagePathManager.getProperty("path.page.receivedtasks");
     private static final String RECEIVED_TASKS_PARAM = "receivedTasks";
     private static final String SHOW_RECEIVED_TASKS_COMMAND_EXCEPTION = "Exception in showing received tasks command";
 

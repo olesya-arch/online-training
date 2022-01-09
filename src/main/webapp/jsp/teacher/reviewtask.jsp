@@ -72,9 +72,9 @@
             <div class="control-group">
                 <!-- Review -->
                 <div class="form-group">
-                    <label for="review"><fmt:message
+                    <label for="teacher_comment"><fmt:message
                             key="label.reviewtask.review" bundle="${rb}"/></label>
-                    <textarea class="form-control" id="review" name="review" rows="10"></textarea>
+                    <textarea class="form-control" id="teacher_comment" name="teacher_comment" rows="10"></textarea>
                 </div>
             </div>
 
