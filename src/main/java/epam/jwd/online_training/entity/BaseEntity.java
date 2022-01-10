@@ -4,5 +4,5 @@ import java.io.Serializable;
 
 public interface BaseEntity extends Serializable {
 
-    Integer getId();
+    int getId();
 }

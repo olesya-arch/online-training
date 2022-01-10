@@ -20,7 +20,7 @@
     <dt><fmt:message key="label.reviewtask.task" bundle="${rb}"/></dt>
     <dd>
         <c:forEach items="${sessionScope.relatedTasks}" var="tasks">
-            <c:if test="${tasks.id eq param.id_task}">
+            <c:if test="${tasks.id eq param.task_id}">
                 ${tasks.description}
             </c:if>
         </c:forEach>
@@ -29,7 +29,7 @@
     <dt><fmt:message key="label.reviewtask.answer" bundle="${rb}"/></dt>
     <dd>
         <c:forEach items="${sessionScope.reviewsAndUsers}" var="reviews">
-            <c:if test="${reviews.studentId eq param.id_account and reviews.taskId eq param.id_task}">
+            <c:if test="${reviews.studentId eq param.id_account and reviews.taskId eq param.task_id}">
                 ${reviews.answer}
             </c:if>
         </c:forEach>
@@ -47,7 +47,7 @@
 
         <form name="editCourseForm" method="GET" action="/controller">
             <input type="hidden" name="command" value="sendreview"/>
-            <input type="hidden" name="id_task" value="${param.id_task}"/>
+            <input type="hidden" name="task_id" value="${param.task_id}"/>
             <input type="hidden" name="id_account" value="${param.id_account}"/>
 
             <div class="control-group">

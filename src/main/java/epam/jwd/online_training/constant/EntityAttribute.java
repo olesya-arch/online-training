@@ -20,13 +20,13 @@ public final class EntityAttribute {
     public static final String COURSE_TITLE = "c_title";
     public static final String COURSE_DESCRIPTION = "c_description";
 
-    public static final String TASK_ID = "id_task";
+    public static final String TASK_ID = "task_id";
     public static final String TASK_TITLE = "t_title";
     public static final String TASK_DESCRIPTION = "description";
     public static final String TASK_COURSE_ID = "course_id";
 
     public static final String TASK_REVIEW_STUDENT_ID = "student_id";
-    public static final String TASK_REVIEW_TASK_ID = "task_id";
+    public static final String TASK_REVIEW_TASK_ID = "t_task_id";
     public static final String TASK_REVIEW_ANSWER = "task_answer";
     public static final String TASK_REVIEW_COMMENT = "teacher_comment";
     public static final String TASK_REVIEW_MARK = "mark";

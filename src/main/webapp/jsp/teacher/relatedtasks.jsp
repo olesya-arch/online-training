@@ -74,7 +74,7 @@
                             <td>
                                 <form method="GET" action="/controller">
                                     <input type="hidden" name="command" value="takereviewsbytaskid"/>
-                                    <input type="hidden" name="taskid" value="${tasks.id}"/>
+                                    <input type="hidden" name="task_id" value="${tasks.id}"/>
                                     <button type="submit" class="btn btn-info"><fmt:message
                                             key="label.relatedtasks.task-info-btn" bundle="${rb}"/></button>
                                 </form>

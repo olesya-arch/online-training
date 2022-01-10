@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Task implements BaseEntity {
 
-    private static final long serialVersionUID = -6395165809160123490L;
-    private Integer id;
+    private static final long serialVersionUID = 575580161872614669L;
+    private int id;
     private String title;
     private String description;
     private int courseId;
@@ -13,7 +13,7 @@ public class Task implements BaseEntity {
     public Task () {
     }
 
-    public Task(Integer id, String title, String description, int courseId) {
+    public Task(int id, String title, String description, int courseId) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -21,11 +21,11 @@ public class Task implements BaseEntity {
     }
 
     @Override
-    public Integer getId() {
-        return null;
+    public int getId() {
+        return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

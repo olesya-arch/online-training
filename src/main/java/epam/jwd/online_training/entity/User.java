@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class User implements BaseEntity {
 
-    private static final long serialVersionUID = 8921669293185159841L;
-    private Integer id;
+    private static final long serialVersionUID = -5918289965854497577L;
+    private int id;
     private String email;
     private String password;
     private String firstName;
@@ -16,7 +16,7 @@ public class User implements BaseEntity {
     public User() {
     }
 
-    public User(Integer id, String email, String password, String firstName, String lastName, UserRole role) {
+    public User(int id, String email, String password, String firstName, String lastName, UserRole role) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -26,11 +26,11 @@ public class User implements BaseEntity {
     }
 
     @Override
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

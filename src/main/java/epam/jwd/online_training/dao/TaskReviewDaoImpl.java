@@ -23,18 +23,18 @@ public class TaskReviewDaoImpl extends AbstractDao implements TaskReviewDao {
             "update task_review " +
                     "set task_answer=? " +
                     "where student_id=? " +
-                    "and task_id=?";
+                    "and t_task_id=?";
 
     private static final String SEND_TASK_REVIEW =
             "update task_review " +
                     "set mark=?, " +
                     "teacher_comment=? " +
                     "where student_id=? " +
-                    "and task_id=?";
+                    "and t_task_id=?";
 
     private static final String FIND_TASK_REVIEWS_AND_STUDENTS_BY_TASK_ID =
             "select tr.student_id, " +
-                    "tr.task_id, " +
+                    "tr.t_task_id, " +
                     "tr.task_answer, " +
                     "tr.teacher_comment, " +
                     "tr.mark, " +
@@ -47,7 +47,7 @@ public class TaskReviewDaoImpl extends AbstractDao implements TaskReviewDao {
                     "ua.status_is_deleted " +
                     "from task_review as tr " +
                     "inner join user_account as ua on tr.student_id = ua.id_account " +
-                    "where tr.task_id=?";
+                    "where tr.t_task_id=?";
 
     @Override
     public boolean sendAnswer(int userId, int taskId, String answer) throws DaoException {

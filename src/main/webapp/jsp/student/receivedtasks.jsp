@@ -35,28 +35,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${requestScope.receivedTasks}" var="task">
+                <c:forEach items="${requestScope.receivedTasks}" var="tasks">
                     <tr>
-                        <td>${task.title}</td>
-                        <td>${task.description}</td>
+                        <td>${tasks.title}</td>
+                        <td>${tasks.description}</td>
                         <td>
                             <c:choose>
-                                <c:when test="${task.review.mark eq 0}">
+                                <c:when test="${tasks.review.mark eq 0}">
                                     <fmt:message key="label.receivedtasks.tasknotreviewed" bundle="${rb}"/>
                                 </c:when>
                                 <c:otherwise>
-                                    ${task.review.mark}
+                                    ${tasks.review.mark}
                                 </c:otherwise>
                             </c:choose>
                         </td>
-                        <td>${task.review.review}</td>
+                        <td>${tasks.review.review}</td>
                         <td>
                             <c:choose>
-                                <c:when test="${task.review.mark eq 0}">
+                                <c:when test="${tasks.review.mark eq 0}">
                                     <form method="POST" action="/controller">
                                         <input type="hidden"  name="command" value="getpage" />
                                         <input type="hidden"  name="expectedPage" value="sendanswer" />
-                                        <input type="hidden"  name="taskid" value="${task.id}" />
+                                        <input type="hidden"  name="task_id" value="${tasks.id}" />
                                         <button type="submit" class="btn btn-success"><fmt:message key="label.receivedtasks.send-answer" bundle="${rb}"/></button>
                                     </form>
                                 </c:when>

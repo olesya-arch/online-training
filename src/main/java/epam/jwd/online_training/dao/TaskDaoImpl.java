@@ -21,7 +21,7 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao{
     private static final String FAIL_FINDING_RECEIVED_TASKS = "Fail finding received tasks in DAO. ";
 
     private static final String FIND_TASKS_BY_COURSE_ID =
-            "select id_task, " +
+            "select task_id, " +
                     "t_title, " +
                     "description, " +
                     "course_id " +
@@ -31,18 +31,18 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao{
             "insert into task (t_title, description, course_id) values (?,?,?)";
 
     private static final String FIND_RECEIVED_TASKS =
-            "select t.id_task, " +
+            "select t.task_id, " +
                     "t.t_title, " +
                     "t.description, " +
                     "t.course_id, " +
                     "tr.student_id, " +
-                    "tr.task_id, " +
+                    "tr.t_task_id, " +
                     "tr.task_answer, " +
                     "tr.teacher_comment, " +
                     "tr.mark " +
                     "from task as t " +
                     "inner join task_review as tr " +
-                    "on t.id_task = tr.task_id " +
+                    "on t.task_id = tr.t_task_id " +
                     "where tr.student_id=?";
 
     @Override

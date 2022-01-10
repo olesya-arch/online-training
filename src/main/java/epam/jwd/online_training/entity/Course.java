@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Course implements BaseEntity {
 
-    private static final long serialVersionUID = 4081717350851850823L;
-    private Integer id;
+    private static final long serialVersionUID = -3128697086708998985L;
+    private int id;
     private String title;
     private String description;
     private int typeId;
@@ -16,7 +16,7 @@ public class Course implements BaseEntity {
     public Course() {
     }
 
-    public Course(Integer id, String title, String description, int typeId,
+    public Course(int id, String title, String description, int typeId,
                   int teacherId, CourseStatus status, Boolean isAvailable) {
         this.id = id;
         this.title = title;
@@ -28,11 +28,11 @@ public class Course implements BaseEntity {
     }
 
     @Override
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

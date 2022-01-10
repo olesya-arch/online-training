@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class CourseType implements BaseEntity {
 
-    private static final long serialVersionUID = -6852450007252963575L;
+    private static final long serialVersionUID = 9080519141328153391L;
     private int id;
     private Language language;
 
@@ -17,7 +17,7 @@ public class CourseType implements BaseEntity {
     }
 
     @Override
-    public Integer getId() { return id; }
+    public int getId() { return id; }
 
     public void setId(int id) {
         this.id = id;

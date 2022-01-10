@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class TaskReview implements BaseEntity {
 
-    private static final long serialVersionUID = 8117078918169120756L;
-    private Integer studentId;
-    private Integer taskId;
+    private static final long serialVersionUID = 3837244967897773709L;
+    private int studentId;
+    private int taskId;
     private String answer;
     private String review;
     private Integer mark;
@@ -14,7 +14,7 @@ public class TaskReview implements BaseEntity {
     public TaskReview() {
     }
 
-    public TaskReview(Integer studentId, Integer taskId, String taskAnswer, String teacherComment, Integer mark) {
+    public TaskReview(int studentId, Integer taskId, String taskAnswer, String teacherComment, Integer mark) {
         this.studentId = studentId;
         this.taskId = taskId;
         this.answer = taskAnswer;
@@ -22,11 +22,11 @@ public class TaskReview implements BaseEntity {
         this.mark = mark;
     }
 
-    public Integer getId() {
+    public int getId() {
         return studentId;
     }
 
-    public void setId(Integer studentId) {
+    public void setId(int studentId) {
         this.studentId = studentId;
     }
 
