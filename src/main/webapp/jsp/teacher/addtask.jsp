@@ -25,11 +25,11 @@
 
             <div class="control-group">
                 <!-- Course -->
-                <label class="control-label" for="course_id"><fmt:message key="label.addtask.select-course"
+                <label class="control-label" for="id_course"><fmt:message key="label.addtask.select-course"
                                                                            bundle="${rb}"/><span
                         class="required">*</span></label>
                 <div class="controls">
-                    <select name="course_id" id="course_id" required class="form-control">
+                    <select name="id_course" id="id_course" required class="form-control">
                         <c:forEach items="${sessionScope.relatedCourses}" var="courses">
                             <option value="${courses.id}">${courses.title}</option>
                         </c:forEach>

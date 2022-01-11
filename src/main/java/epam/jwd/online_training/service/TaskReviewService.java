@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TaskReviewService extends Service {
 
-    boolean sendAnswer(int userId, int taskId, String answer) throws ServiceException;
+    boolean sendAnswer(int taskId, int userId, String answer) throws ServiceException;
     boolean sendReview(int userId, int taskId, String comment, int mark) throws ServiceException;
     List<TaskReviewDto> getAllReviewsByTaskId(int taskId) throws ServiceException;
 }

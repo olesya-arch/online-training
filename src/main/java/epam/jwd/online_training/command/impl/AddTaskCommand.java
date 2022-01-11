@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 public class AddTaskCommand extends Command {
 
     private static final Logger LOG = LogManager.getLogger(AddTaskCommand.class);
-    private static final String COURSE_ID = "course_id";
+    private static final String COURSE_ID = "id_course";
     private static final String TASK_TITLE = "t_title";
     private static final String TASK_DESCRIPTION = "description";
     private static final String ADD_SUCCESS_MESSAGE = "message.teacher.task-add-success";

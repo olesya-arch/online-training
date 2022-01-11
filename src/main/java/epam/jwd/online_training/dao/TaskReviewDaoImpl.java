@@ -50,13 +50,14 @@ public class TaskReviewDaoImpl extends AbstractDao implements TaskReviewDao {
                     "where tr.t_task_id=?";
 
     @Override
-    public boolean sendAnswer(int userId, int taskId, String answer) throws DaoException {
+    public boolean sendAnswer(int taskId, int userId, String answer) throws DaoException {
         boolean result = false;
         ProxyConnection proxyConnection = connectionThreadLocal.get();
         try(PreparedStatement statement = proxyConnection.prepareStatement(UPDATE_ANSWER)) {
             statement.setString(1, answer);
             statement.setInt(2, userId);
             statement.setInt(3, taskId);
+
             if(statement.executeUpdate() != 0) {
                 result = true;
             }

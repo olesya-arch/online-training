@@ -28,7 +28,7 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao{
                     "from task where course_id=?";
 
     private static final String ADD_NEW_TASK =
-            "insert into task (t_title, description, course_id) values (?,?,?)";
+            "insert into task (t_title, description, course_id) values (?, ?, ?)";
 
     private static final String FIND_RECEIVED_TASKS =
             "select t.task_id, " +

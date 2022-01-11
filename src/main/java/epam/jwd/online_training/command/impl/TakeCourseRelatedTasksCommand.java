@@ -19,7 +19,7 @@ public class TakeCourseRelatedTasksCommand extends Command {
 
     private static final Logger LOG = LogManager.getLogger(TakeCourseRelatedTasksCommand.class);
     private static final String TASKS_PAGE_PATH = PagePathManager.getProperty("path.page.relatedtasks");
-    private static final String COURSE_ID_PARAM = "course_id";
+    private static final String COURSE_ID_PARAM = "id_course";
     private static final String RELATED_TASKS_ATTR = "relatedTasks";
     private static final String SHOW_COURSE_RELATED_TASK_COMMAND_EXCEPTION =
             "Exception occurred showing course related tasks command. ";

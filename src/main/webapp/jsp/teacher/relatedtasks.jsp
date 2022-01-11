@@ -30,11 +30,11 @@
             <input type="hidden" name="command" value="takecourserelatedtasks"/>
             <div class="control-group">
                 <!-- Related courses -->
-                <label class="control-label" for="course_id"><fmt:message key="label.relatedtasks.select_course"
+                <label class="control-label" for="id_course"><fmt:message key="label.relatedtasks.select_course"
                                                                                   bundle="${rb}"/><span
                         class="required"></span></label>
                 <div class="controls">
-                    <select name="course_id" id="course_id" required class="form-control">
+                    <select name="id_course" id="id_course" required class="form-control">
                         <c:forEach items="${sessionScope.relatedCourses}" var="courses">
                             <option value="${courses.id}">${courses.title}</option>
                         </c:forEach>
@@ -74,7 +74,7 @@
                             <td>
                                 <form method="GET" action="/controller">
                                     <input type="hidden" name="command" value="takereviewsbytaskid"/>
-                                    <input type="hidden" name="task_id" value="${tasks.id}"/>
+                                    <input type="hidden" name="taskid" value="${tasks.id}"/>
                                     <button type="submit" class="btn btn-info"><fmt:message
                                             key="label.relatedtasks.task-info-btn" bundle="${rb}"/></button>
                                 </form>

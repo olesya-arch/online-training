@@ -21,7 +21,7 @@ public class TakeReviewsByTaskId extends Command {
     private static final String SHOW_REVIEWS_BY_TASK_ID_COMMAND_EXCEPTION =
             "Exception in executing show reviews by task id command. ";
     private static final String TASK_REVIEWS_PAGE_PATH = PagePathManager.getProperty("path.page.taskreviews");
-    private static final String TASK_ID_PARAM = "task_id";
+    private static final String TASK_ID_PARAM = "taskid";
     private static final String REVIEWS_AND_USERS_DTO_ATTRIBUTE = "reviewsAndUsers";
 
     public TakeReviewsByTaskId() { super(ServiceManager.getTaskReviewService()); }
