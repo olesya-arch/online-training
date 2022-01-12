@@ -26,9 +26,9 @@
 
                 <div class="control-group">
                     <!-- E-mail -->
-                    <label class="control-label" for="email"><fmt:message key="label.registration.email" bundle="${rb}"/><span class="required">*</span></label>
+                    <label class="control-label" for="e_mail"><fmt:message key="label.registration.email" bundle="${rb}"/><span class="required">*</span></label>
                     <div class="controls">
-                        <input type="email" id="email" name="e_mail" required="" class="form-control" placeholder="email@example.com" />
+                        <input type="email" id="e_mail" name="e_mail" required="" class="form-control" placeholder="email@example.com" />
                         <p class="help-block"><fmt:message key="label.registration.email.help" bundle="${rb}"/></p>
                     </div>
                 </div>

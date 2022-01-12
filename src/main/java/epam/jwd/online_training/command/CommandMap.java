@@ -25,6 +25,7 @@ public class CommandMap {
         commandMap.put(TAKEALLCOURSES, new TakeAllCoursesCommand());
         commandMap.put(EDITCOURSE, new EditCourseCommand());
         commandMap.put(DELETEUSER, new DeleteUserCommand());
+        commandMap.put(GETSTATISTIC, new GetStatisticCommand());
 
         commandMap.put(TAKETEACHERRELATEDCOURSES, new TakeTeacherRelatedCoursesCommand());
         commandMap.put(TAKECOURSERELATEDTASKS, new TakeCourseRelatedTasksCommand());

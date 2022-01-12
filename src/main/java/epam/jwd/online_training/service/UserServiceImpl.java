@@ -3,6 +3,7 @@ package epam.jwd.online_training.service;
 import epam.jwd.online_training.dao.DAOManager;
 import epam.jwd.online_training.dao.TransactionManager;
 import epam.jwd.online_training.dao.UserDaoImpl;
+import epam.jwd.online_training.dto.StatisticDto;
 import epam.jwd.online_training.entity.User;
 import epam.jwd.online_training.exception.DaoException;
 import epam.jwd.online_training.exception.ServiceException;
@@ -21,13 +22,14 @@ public class UserServiceImpl implements UserService {
     private static final Logger LOG = LogManager.getLogger(UserServiceImpl.class);
     private static UserDaoImpl userDao = DAOManager.getUserDao();
 
-    private static final String FAIL_TO_GET_ALL_TEACHERS = "Failed getting instance all teachers from dao. ";
-    private static final String FAIL_IN_LOGIN_PROCESS = "Failed in login process. ";
+    private static final String FAIL_TO_GET_ALL_TEACHERS = "Failed getting instance all teachers in service. ";
+    private static final String FAIL_IN_LOGIN_PROCESS = "Failed in login process in service. ";
     private static final String FAIL_IN_PROCESS_OF_DELETING_USER = "Failed in process deleting user in service. ";
-    private static final String FAIL_IN_PROCESS_OF_CHECKING_EMAIL = "Failed checking email availability. ";
-    private static final String FAIL_IN_SIGN_UP = "Failed creating a new user during sign up. ";
-    private static final String FAIL_IN_PROCESS_OF_JOINING_COURSE = "Failed joining the course. ";
-    private static final String FAIL_UPDATING_USER_PASSWORD = "Failed updating user password. ";
+    private static final String FAIL_IN_PROCESS_OF_CHECKING_EMAIL = "Failed checking email availability in service. ";
+    private static final String FAIL_IN_SIGN_UP = "Failed creating a new user during sign up in service. ";
+    private static final String FAIL_IN_PROCESS_OF_JOINING_COURSE = "Failed joining the course in service. ";
+    private static final String FAIL_UPDATING_USER_PASSWORD = "Failed updating user password in service. ";
+    private static final String FAIL_IN_CREATION_STATISTICS = "Fail in process of creation statistics in service.";
 
     @Override
     public User login(String emailInput, String passwordInput) throws ServiceException {
@@ -124,5 +126,17 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException(FAIL_UPDATING_USER_PASSWORD, e);
         }
         return isSent;
+    }
+
+    @Override
+    public StatisticDto getStatistic() throws ServiceException {
+        StatisticDto statisticDto = null;
+        try(TransactionManager tm = TransactionManager.launchQuery(userDao)) {
+            statisticDto = userDao.getStatistic();
+        } catch (SQLException | DaoException e) {
+            LOG.error(FAIL_IN_CREATION_STATISTICS, e);
+            throw new ServiceException(FAIL_IN_CREATION_STATISTICS, e);
+        }
+        return statisticDto;
     }
 }

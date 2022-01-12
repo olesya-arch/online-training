@@ -1,6 +1,7 @@
 package epam.jwd.online_training.dao;
 
 import epam.jwd.online_training.connection.ProxyConnection;
+import epam.jwd.online_training.dto.StatisticDto;
 import epam.jwd.online_training.entity.User;
 import epam.jwd.online_training.entity.UserRole;
 import epam.jwd.online_training.exception.DaoException;
@@ -26,6 +27,9 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
     private static final String FAIL_DELETING_USER_BY_ID_EXCEPTION = "Failed deleting user by id in DAO.";
     private static final String ADDING_COURSE_TO_USER_EXCEPTION = "Exception occurred adding the course to user in DAO.";
     private static final String FAIL_ADDING_NEW_ACCOUNT_EXCEPTION = "Failed adding new account in DAO. ";
+    private static final String FAIL_GETTING_STATISTIC_INFORMATION_EXCEPTION = "Failed getting statistic information in DAO.";
+    private static final String FAIL_GETTING_COUNT_OF_PEOPLE_WHO_STUDY_DEFINITE_LANGUAGE_EXCEPTION =
+            "Failed getting count of people who study definite language in DAO. ";
 
     private static final String USER_ID = "id_account";
     private static final String USER_STATUS_IS_DELETED = "status_is_deleted";
@@ -78,6 +82,33 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
                     "last_name, " +
                     "account_role) " +
                     "values (?,?,?,?,?)";
+
+    private static final String GET_COUNT_OF_PEOPLE_WHO_STUDY_THAT_LANGUAGE =
+            "select count(ua.id_account) from user_account as ua " +
+                    "join course_enrolment as ce " +
+                    "on ua.id_account = ce.student_id " +
+                    "join course as c " +
+                    "on ce.course_id = c.id_course " +
+                    "join course_type as ct " +
+                    "on c.course_type = ct.id_type " +
+                    "where ct.category in (?)";
+
+    private static final String GET_STATISTIC =
+            "select count(id_account) " +
+                    "from user_account " +
+                    "union all " +
+                    "select count(task_id) " +
+                    "from task " +
+                    "union all " +
+                    "select count(id_course) " +
+                    "from course " +
+                    "union all " +
+                    "select count(id_account) " +
+                    "from user_account " +
+                    "where account_role = 'teacher' " +
+                    "union all " +
+                    "select count(distinct category) " +
+                    "from course_type ";
 
     @Override
     public User findUserByEmailAndPassword(String email, String password) throws DaoException {
@@ -212,5 +243,66 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
             throw new DaoException(FAIL_DELETING_USER_BY_ID_EXCEPTION, e);
         }
         return isDeleteSuccessfully;
+    }
+
+    @Override
+    public StatisticDto getStatistic() throws DaoException {
+        StatisticDto statisticDto = null;
+
+        int usersCount = 0;
+        int tasksCount = 0;
+        int coursesCount = 0;
+        int teachersCount = 0;
+        int courseTypesCount = 0;
+        int englishLanguageCount = 0;
+        int germanLanguageCount = 0;
+        int frenchLanguageCount = 0;
+        int latvianLanguageCount = 0;
+        int chineseLanguageCount = 0;
+
+        ProxyConnection proxyConnection = connectionThreadLocal.get();
+        try(PreparedStatement statement= proxyConnection.prepareStatement(GET_STATISTIC)) {
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            usersCount = resultSet.getInt(1);
+            resultSet.next();
+            tasksCount = resultSet.getInt(1);
+            resultSet.next();
+            coursesCount = resultSet.getInt(1);
+            resultSet.next();
+            teachersCount = resultSet.getInt(1);
+            resultSet.next();
+            courseTypesCount = resultSet.getInt(1);
+        } catch (SQLException e) {
+            LOG.error(FAIL_GETTING_STATISTIC_INFORMATION_EXCEPTION,e);
+            throw new DaoException(FAIL_GETTING_STATISTIC_INFORMATION_EXCEPTION,e);
+        }
+
+        englishLanguageCount = getCountOfUsersWhoStudyThatLanguage("english");
+        germanLanguageCount = getCountOfUsersWhoStudyThatLanguage("german");
+        frenchLanguageCount = getCountOfUsersWhoStudyThatLanguage("french");
+        latvianLanguageCount = getCountOfUsersWhoStudyThatLanguage("latvian");
+        chineseLanguageCount = getCountOfUsersWhoStudyThatLanguage("chinese");
+
+        statisticDto = new StatisticDto(usersCount, tasksCount, coursesCount, teachersCount, courseTypesCount,
+                englishLanguageCount, germanLanguageCount, frenchLanguageCount, latvianLanguageCount, chineseLanguageCount);
+
+        return statisticDto;
+    }
+
+    @Override
+    public int getCountOfUsersWhoStudyThatLanguage(String language) throws DaoException {
+        int count = 0;
+        ProxyConnection proxyConnection = connectionThreadLocal.get();
+        try(PreparedStatement statement = proxyConnection.prepareStatement(GET_COUNT_OF_PEOPLE_WHO_STUDY_THAT_LANGUAGE)) {
+            statement.setString(1, language);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            count = resultSet.getInt(1);
+        } catch (SQLException e) {
+            LOG.error(FAIL_GETTING_COUNT_OF_PEOPLE_WHO_STUDY_DEFINITE_LANGUAGE_EXCEPTION, e);
+            throw new DaoException(FAIL_GETTING_COUNT_OF_PEOPLE_WHO_STUDY_DEFINITE_LANGUAGE_EXCEPTION, e);
+        }
+        return count;
     }
 }

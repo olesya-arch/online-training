@@ -1,5 +1,6 @@
 package epam.jwd.online_training.dao;
 
+import epam.jwd.online_training.dto.StatisticDto;
 import epam.jwd.online_training.entity.User;
 import epam.jwd.online_training.exception.DaoException;
 
@@ -15,4 +16,6 @@ public interface UserDao {
     boolean joinCourse(int courseId, int userId) throws DaoException;
     List<User> findAllTeachers() throws DaoException;
     boolean deleteUser(int userId) throws DaoException;
+    StatisticDto getStatistic() throws DaoException;
+    int getCountOfUsersWhoStudyThatLanguage(String language) throws DaoException;
 }
