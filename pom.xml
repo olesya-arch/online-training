@@ -73,17 +73,17 @@
             <scope>provided</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>javax.servlet.jsp.jstl</groupId>-->
-<!--            <artifactId>jstl-api</artifactId>-->
-<!--            <version>1.2</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.glassfish.web</groupId>-->
-<!--            <artifactId>jstl-impl</artifactId>-->
-<!--            <version>1.2</version>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jstl-impl</artifactId>
+            <version>1.2</version>
+            <scope>runtime</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -106,16 +106,16 @@
         </dependency>
 
         <!-- JSTL -->
-        <dependency>
-            <groupId>org.apache.taglibs</groupId>
-            <artifactId>taglibs-standard-impl</artifactId>
-            <version>1.2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.taglibs</groupId>
-            <artifactId>taglibs-standard-spec</artifactId>
-            <version>1.2.5</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.taglibs</groupId>-->
+<!--            <artifactId>taglibs-standard-impl</artifactId>-->
+<!--            <version>1.2.5</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.taglibs</groupId>-->
+<!--            <artifactId>taglibs-standard-spec</artifactId>-->
+<!--            <version>1.2.5</version>-->
+<!--        </dependency>-->
         <!--    -->
 
         <dependency>

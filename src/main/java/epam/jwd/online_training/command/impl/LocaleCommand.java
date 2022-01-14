@@ -25,11 +25,19 @@ public class LocaleCommand extends Command {
     public ActionResult execute(RequestContent content) throws CommandException {
         String requestLocale = content.getSingleRequestParameter(SessionAttribute.LOCALE);
         String locale;
-        if (EN_LOCALE_MARKER.equals(requestLocale)) {
-            locale = EN_LOCALE_ATTRIBUTE;
-        } else {
-            locale = RU_LOCALE_ATTRIBUTE;
+        switch (requestLocale) {
+            case (RU_LOCALE_ATTRIBUTE):
+                locale = RU_LOCALE_ATTRIBUTE;
+                break;
+            default: locale = EN_LOCALE_ATTRIBUTE;
         }
+
+
+//        if (EN_LOCALE_MARKER.equals(requestLocale)) {
+//            locale = EN_LOCALE_ATTRIBUTE;
+//        } else {
+//            locale = RU_LOCALE_ATTRIBUTE;
+//        }
         content.setSessionAttributes(SessionAttribute.LOCALE, locale);
 
         String targetUrl = defineTargetPage(content);
