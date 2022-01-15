@@ -71,7 +71,7 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 
     private static final String ADD_COURSE_TO_USER =
             "insert into course_enrolment " +
-                    "(course_id, student_id) " +
+                    "(c_e_course_id, c_e_student_id) " +
                     "values (?,?)";
 
     private static final String ADD_USER_ACCOUNT =
@@ -86,7 +86,7 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
     private static final String GET_COUNT_OF_PEOPLE_WHO_STUDY_THAT_LANGUAGE =
             "select count(ua.id_account) from user_account as ua " +
                     "join course_enrolment as ce " +
-                    "on ua.id_account = ce.student_id " +
+                    "on ua.id_account = ce.c_e_student_id " +
                     "join course as c " +
                     "on ce.course_id = c.id_course " +
                     "join course_type as ct " +

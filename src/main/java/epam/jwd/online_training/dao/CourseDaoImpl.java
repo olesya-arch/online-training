@@ -63,12 +63,12 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.status_is_deleted, " +
                     "c_t.id_type, " +
                     "c_t.category, " +
-                    "c_e.course_id, c_e.student_id " +
+                    "c_e.c_e_course_id, c_e.c_e_student_id " +
                     "from course as c " +
                     "left join user_account as u_a on c.teacher_id = u_a.id_account " +
                     "left join course_type as c_t on c.course_type = c_t.id_type " +
-                    "left join course_enrolment as c_e on c.id_course = c_e.course_id " +
-                    "where c_e.student_id=?";
+                    "left join course_enrolment as c_e on c.id_course = c_e.c_e_course_id " +
+                    "where c_e.c_e_student_id=?";
 
     private static final String FIND_AVAILABLE_COURSES_AND_RELATED_DATA =
             "select c.id_course, " +
@@ -91,7 +91,7 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "left join user_account as u_a on c.teacher_id = u_a.id_account " +
                     "left join course_type as c_t on c.course_type = c_t.id_type " +
                     "where c.is_available = 1 and c.id_course NOT IN " +
-                    "(select course_id from course_enrolment AS taken_courses where student_id=?)";
+                    "(select c_e_course_id from course_enrolment AS taken_courses where c_e_student_id=?)";
 
     private static final String FIND_ALL_COURSES_AND_RELATED_DATA =
             "select c.id_course, " +

@@ -52,9 +52,15 @@
                     </form>
                 </li>
                 <li>
+                <form action="/controller">
+                    <input type="hidden" name="command" value="locale">
+                    <button type="submit" class="btn btn-default navbar-btn" name="locale" value="en_US" >EN</button>
+                </form>
+                </li>
+                <li>
                     <form action="/controller">
                         <input type="hidden" name="command" value="locale">
-                        <button type="submit" class="btn btn-default navbar-btn" name="locale" value="en_US" >EN</button>
+                        <button type="submit" class="btn btn-default navbar-btn" name="locale" value="zh_CN" >CN</button>
                     </form>
                 </li>
                 <li>

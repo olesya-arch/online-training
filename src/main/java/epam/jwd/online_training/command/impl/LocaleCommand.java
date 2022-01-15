@@ -16,6 +16,7 @@ public class LocaleCommand extends Command {
     private static final String EN_LOCALE_MARKER = "EN";
     private static final String EN_LOCALE_ATTRIBUTE = "en_US";
     private static final String RU_LOCALE_ATTRIBUTE = "ru_RU";
+    private static final String CN_LOCALE_ATTRIBUTE = "zh_CN";
     private static final String STUDENT_PAGE = "/controller?command=getPage&expectedPage=studentpage";
     private static final String TEACHER_PAGE = "/controller?command=getPage&expectedPage=teacherpage";
     private static final String ADMIN_PAGE = "/controller?command=getPage&expectedPage=adminpage";
@@ -29,15 +30,11 @@ public class LocaleCommand extends Command {
             case (RU_LOCALE_ATTRIBUTE):
                 locale = RU_LOCALE_ATTRIBUTE;
                 break;
+            case (CN_LOCALE_ATTRIBUTE):
+                locale = CN_LOCALE_ATTRIBUTE;
+                break;
             default: locale = EN_LOCALE_ATTRIBUTE;
         }
-
-
-//        if (EN_LOCALE_MARKER.equals(requestLocale)) {
-//            locale = EN_LOCALE_ATTRIBUTE;
-//        } else {
-//            locale = RU_LOCALE_ATTRIBUTE;
-//        }
         content.setSessionAttributes(SessionAttribute.LOCALE, locale);
 
         String targetUrl = defineTargetPage(content);

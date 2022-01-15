@@ -46,6 +46,12 @@
                 </li>
                 <li>
                     <form method="POST" action="/controller">
+                        <input type="hidden" name="command" value="locale">
+                        <button type="submit" class="btn btn-default navbar-btn" name="locale" value="zh_CN" >CN</button>
+                    </form>
+                </li>
+                <li>
+                    <form method="POST" action="/controller">
                         <input type="hidden" name="command" value="logout" />
                         <button class="btn btn-info navbar-btn" ><fmt:message key="label.navbar.logout"  bundle="${rb}"/></button>
                     </form>
