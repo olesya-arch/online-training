@@ -25,7 +25,6 @@ public class PageRedirectSecurityFilter implements Filter {
         ServletContext servletContext = httpServletRequest.getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(indexPath);
         requestDispatcher.forward(servletRequest, servletResponse);
-
     }
 
     @Override

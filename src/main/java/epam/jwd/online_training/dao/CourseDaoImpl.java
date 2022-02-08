@@ -13,7 +13,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseDaoImpl extends AbstractDao implements CourseDao{
+public class CourseDaoImpl extends AbstractDao implements CourseDao {
 
     private static final Logger LOG = LogManager.getLogger(CourseDaoImpl.class);
     private static final String FIND_AVAILABLE_COURSES_EXCEPTION = "Exception in process of finding available courses in DAO. ";
@@ -63,7 +63,8 @@ public class CourseDaoImpl extends AbstractDao implements CourseDao{
                     "u_a.status_is_deleted, " +
                     "c_t.id_type, " +
                     "c_t.category, " +
-                    "c_e.c_e_course_id, c_e.c_e_student_id " +
+                    "c_e.c_e_course_id, " +
+                    "c_e.c_e_student_id " +
                     "from course as c " +
                     "left join user_account as u_a on c.teacher_id = u_a.id_account " +
                     "left join course_type as c_t on c.course_type = c_t.id_type " +

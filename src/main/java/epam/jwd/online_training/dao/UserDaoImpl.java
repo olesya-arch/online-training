@@ -88,7 +88,7 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
                     "join course_enrolment as ce " +
                     "on ua.id_account = ce.c_e_student_id " +
                     "join course as c " +
-                    "on ce.course_id = c.id_course " +
+                    "on ce.c_e_course_id = c.id_course " +
                     "join course_type as ct " +
                     "on c.course_type = ct.id_type " +
                     "where ct.category in (?)";

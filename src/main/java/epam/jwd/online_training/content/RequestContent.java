@@ -11,7 +11,7 @@ public class RequestContent {
     private static final String HEADER_REFERER = "referer";
 
     private Map<String, Object> requestAttributes;
-    private  Map<String, String[]> requestParameters;
+    private Map<String, String[]> requestParameters;
     private Map<String, Object> sessionAttributes;
     private String url;
 
